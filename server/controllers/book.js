@@ -3,7 +3,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 // create a reference to the model
-let Book = require('../models/book');
+let Book = require('../models/survey');
 
 module.exports.displayBookList = (req, res, next) => {
     Book.find((err, bookList) => {
