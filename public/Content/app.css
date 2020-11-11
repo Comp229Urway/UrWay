@@ -1,1 +1,7 @@
 /* custom css goes here */
+
+.navbar-brand img {
+    width: 80px;
+    height: 80px;
+    margin-left: 100px;
+}
