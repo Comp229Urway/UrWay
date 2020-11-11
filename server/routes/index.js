@@ -1,6 +1,8 @@
 let express = require('express');
 let router = express.Router();
 
+let Survey = require('../models/survey');
+
 let indexController = require('../controllers/index');
 
 /* GET home page. */
