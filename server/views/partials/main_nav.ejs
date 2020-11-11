@@ -1,8 +1,8 @@
 <!-- Main Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-secondary bg-white">
     <a class="navbar-brand" href="/"><img
-          src="https://i.imgur.com/Dxff30k.jpg"
-          alt="Logo"
+          src="https://i.imgur.com/j5rbueF.png"
+          alt="Urway Logo"
           loading="lazy"
         />
         Surveys</a>
@@ -18,7 +18,15 @@
         <% } else  { %>
         <li class="nav-item">
         <% } %>
-          <a class="nav-link" href="/home"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
+          <a class="nav-link" href="/home"><i class="fas fa-house-user"></i> Home </a>
+        </li>
+
+        <% if (title == "Surveys") { %>
+        <li class="nav-item active">
+        <% } else  { %>
+        <li class="nav-item">
+        <% } %>
+          <a class="nav-link" href="/Surveys"><i class="fas fa-poll-h"></i> Surveys </a>
         </li>
 
         <% if (title == "About") { %>
@@ -26,39 +34,15 @@
         <% } else  { %>
         <li class="nav-item">
         <% } %>
-          <a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> About </a>
-        </li>
-
-        <% if (title == "Products") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/products"><i class="fab fa-elementor"></i> Products </a>
-        </li>
-
-        <% if (title == "Services") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/services"><i class="fas fa-cogs"></i> Services </a>
-        </li>
-
-        <% if (title == "Books") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/book-list"><i class="fas fa-book"></i> Books </a>
-        </li>
-
+          <a class="nav-link" href="/about"><i class="fas fa-question-circle"></i> About Us </a>
+        </li>  
+        
         <% if (title == "Contact") { %>
         <li class="nav-item active">
         <% } else  { %>
         <li class="nav-item">
         <% } %>
-          <a class="nav-link" href="/contact"><i class="fas fa-mobile-alt"></i> Contact </a>
+          <a class="nav-link" href="/contact"><i class="fas fa-envelope-open-text"></i> Contact Us </a>
         </li>
     </div>
   </nav>
