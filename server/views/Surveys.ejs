@@ -17,8 +17,10 @@
                             <td>
                                 <% if(title == 'Surveys') {%>
                                     <div class="row justify-content-md-center">
-                                        <div class="col-8">
+                                        <div class="col">
 
+
+                                            <hr>
                                             <table class="table table-hover table-striped table-bordered">
 
                                                 <thead class="thead-dark">
@@ -48,7 +50,7 @@
                     </tbody>
                     </table>
 
-                    <form>
+                    <form method="POST">
                         <div class="surveyname">
                             <label for="surveyname"></label>
                             <input type="text" class="form-control" id="surveyname" name="surveyname" placeholder="Untitled Survey">
@@ -121,9 +123,17 @@
                             <option value="1">True</option>
                             <option value="2">False</option>
                             <option value="3">Prefer not to answer</option>
-                          </select><br><br><br><br>
+                          </select><br><br>
+
+
+
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-plus-circle"></i> Create Survey</button>
+                        <a href="/home" class="btn btn-warning btn-lg"><i class="fas fs undo"> Cancel</i></a>
 
                     </form>
+                    <hr>
+                    <hr>
+                    <hr>
 
 
 

@@ -21,6 +21,7 @@ mongoDB.once('open', () => {
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let booksRouter = require('../routes/book');
+let surveylistRouter = require('../routes/surveylist');
 
 let app = express();
 
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use('/', indexRouter);
+app.use('/Surveys', surveylistRouter);
 app.use('/users', usersRouter);
 app.use('/book-list', booksRouter);
 

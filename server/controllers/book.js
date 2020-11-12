@@ -7,21 +7,18 @@ let Book = require('../models/book');
 
 module.exports.displayBookList = (req, res, next) => {
     Book.find((err, bookList) => {
-        if(err)
-        {
+        if (err) {
             return console.error(err);
-        }
-        else
-        {
+        } else {
             //console.log(BookList);
 
-            res.render('book/list', {title: 'Books', BookList: bookList});      
+            res.render('book/list', { title: 'Books', BookList: bookList });
         }
     });
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('book/add', {title: 'Add Book'})          
+    res.render('book/add', { title: 'Add Book' })
 }
 
 module.exports.processAddPage = (req, res, next) => {
@@ -33,14 +30,11 @@ module.exports.processAddPage = (req, res, next) => {
         "price": req.body.price
     });
 
-    Book.create(newBook, (err, Book) =>{
-        if(err)
-        {
+    Book.create(newBook, (err, Book) => {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             // refresh the book list
             res.redirect('/book-list');
         }
@@ -52,15 +46,12 @@ module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
     Book.findById(id, (err, bookToEdit) => {
-        if(err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             //show the edit view
-            res.render('book/edit', {title: 'Edit Book', book: bookToEdit})
+            res.render('edit', { title: 'Edit Book', book: bookToEdit })
         }
     });
 }
@@ -77,14 +68,11 @@ module.exports.processEditPage = (req, res, next) => {
         "price": req.body.price
     });
 
-    Book.updateOne({_id: id}, updatedBook, (err) => {
-        if(err)
-        {
+    Book.updateOne({ _id: id }, updatedBook, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             // refresh the book list
             res.redirect('/book-list');
         }
@@ -94,16 +82,13 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
-    Book.remove({_id: id}, (err) => {
-        if(err)
-        {
+    Book.remove({ _id: id }, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
-             // refresh the book list
-             res.redirect('/book-list');
+        } else {
+            // refresh the book list
+            res.redirect('/book-list');
         }
     });
 }
