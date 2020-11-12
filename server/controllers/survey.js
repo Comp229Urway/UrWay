@@ -15,7 +15,7 @@ module.exports.displaySurveysPage = (req, res, next) => {
 }
 
 module.exports.displayCreatePage = (req, res, next) => {
-    res.render('create', {title: 'Create Survey'});
+    res.render('create-edit', {title: 'Create Survey'});
 }
 
 module.exports.processCreatePage = (req, res, next) => {
@@ -86,7 +86,15 @@ module.exports.processCreatePage = (req, res, next) => {
 }
 
 module.exports.displayEditPage = (req, res, next) => {
-    
+    let id = req.params.id;
+    Survey.findById(id, (err, surveyToEdit) => {
+        if(err)
+        {
+          console.log(err);
+          res.end();
+        }
+        res.render('create-edit', {title:'Edit Survey', surveys:surveyToEdit})
+      });
 }
 
 module.exports.processEditPage = (req, res, next) => {
