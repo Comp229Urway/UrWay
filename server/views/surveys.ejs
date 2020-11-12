@@ -4,13 +4,15 @@
      
     <div class="row justify-content-md-center">
         <div class="col-8">
-            <a href="/surveys/create" class="btn btn-primary btn-lg">Add New Survey</a>
-
+            <a href="/surveys/create" class="btn btn-outline-dark btn-lg">Add New Survey</a>
+            <br>
+            <br>
+            
             <table class="table">
 
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Title</th>
+                        <th scope="col">Surveys already created</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -21,10 +23,10 @@
                     <tr>
                         <td><%= surveys[i].title %></td>
                         <td>
-                            <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-outline-success btn-sm">Edit</a>
                         </td>
                         <td>
-                            <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-warning btn-sm">Delete</a>
+                            <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     <% } %>

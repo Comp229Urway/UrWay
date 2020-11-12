@@ -48,3 +48,15 @@ background-color: rgba(224, 222, 222, 0.205) !important;
     font-size: 20px;
     font-weight: 400;
 }
+
+input[type='radio'] {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;    
+}
+
+input[type='radio']:checked {
+    width: 17px;
+    height: 17px;
+    border-radius: 17px;    
+}
