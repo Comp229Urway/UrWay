@@ -1,0 +1,61 @@
+<%- include partials/header.ejs %>
+
+    <%- include partials/main_nav.ejs %>
+        <main class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">
+                    <%= title %>
+                </h1>
+            </div>
+
+
+            <div class="row justify-content-md-center">
+                <div class="col-8">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"> Survey Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <% if(title == 'Surveys') {%>
+                                        <div class="row justify-content-md-center">
+                                            <div class="col-8">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col"> Survey Title</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <%= surveylist[0].surveyname %>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <% } %>
+
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+                    <%- include partials/bottom_nav.ejs %>
+
+                        <%- include partials/footer.ejs %>
