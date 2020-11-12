@@ -38,3 +38,13 @@ background-color: rgba(224, 222, 222, 0.205) !important;
 .buffer{
     height: 100px;
 }
+
+#surveyTitle {
+    font-size:30px;
+    font-weight: 500;    
+}
+
+#questions {
+    font-size: 20px;
+    font-weight: 400;
+}
