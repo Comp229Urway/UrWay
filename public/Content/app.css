@@ -26,6 +26,11 @@
     transform: translate(-50%, -50%);
 }
 
+.containerHome div {
+        padding-bottom: 50px;
+}
+
+
 .buffer{
     height: 100px;
 }
