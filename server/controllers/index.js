@@ -14,8 +14,14 @@ module.exports.displayProductsPage = (req, res, next) => {
 }
 
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('survey', { title: 'Survey'});
-}
+    Survey.find((err, data) => {
+        if (err) {
+            console.error(err);
+            res.end();
+        }
+        res.render('survey', { title: 'Survey' });
+    }
+    )}
 
 module.exports.displayContactPage = (req, res, next) => {
     res.render('contact', { title: 'Contact'});
