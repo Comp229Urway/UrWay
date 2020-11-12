@@ -30,6 +30,10 @@
         padding-bottom: 50px;
 }
 
+.jumbotron{
+color: #2c2c2c;
+background-color: rgba(224, 222, 222, 0.205) !important;
+}
 
 .buffer{
     height: 100px;
