@@ -21,4 +21,11 @@ router.post('/edit/:id', surveyController.processEditPage);
 
 /* GET process Delete page. DELETE*/
 router.get('/delete/:id', surveyController.processDeletePage);
+
+/* GET Participate page. READ*/
+router.get('/participate/:id', surveyController.displayParticipatePage);
+
+/* Post process Participate page. READ*/
+router.post('/participate/:id', surveyController.processParticapatePage);
+
 module.exports = router;

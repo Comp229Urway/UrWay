@@ -15,7 +15,30 @@
         <a href="#" class="btn btn-lg btn-secondary">Create Survey</a>
       </p>
     </div>
+    <div class="row justify-content-md-center">
+      <div class="col-8">
+          <table class="table">
+              <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">Title</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <% for(let i=0; i < surveys.length; i++) { %>
+                  <tr>
+                      <td><%= surveys[i].title %></td>
+                      <td>
+                          <a href="surveys/participate/<%= surveys[i]._id %>" class="btn btn-primary btn-sm">Participate</a>
+                      </td>
+                  </tr>
+                  <% } %>
+              </tbody>
+          </table>
+      </div>
+  </div>
   </main>
+  
   
 <%- include partials/bottom_nav.ejs %>  
 

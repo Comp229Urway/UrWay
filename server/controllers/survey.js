@@ -149,3 +149,32 @@ module.exports.processDeletePage = (req, res, next) => {
         res.redirect('/surveys');
     });
 }
+
+module.exports.displayParticipatePage = (req, res, next) => {
+    let id = req.params.id;
+    Survey.findById(id, (err, surveyToEdit) => {
+        if(err)
+        {
+          console.log(err);
+          res.end();
+        }
+        res.render('participate', {title:'Participate', surveys:surveyToEdit})
+      });
+}
+
+module.exports.processParticapatePage = (req, res, next) => {
+    console.log({
+        "Title": req.body.surveyTitle,
+        "Question 1":req.body.question1,
+        "Answer to Question 1":req.body.answerToQuestion1,
+        "Question 2":req.body.question2,
+        "Answer to Question 2":req.body.answerToQuestion2,
+        "Question 3":req.body.question3,
+        "Answer to Question 3":req.body.answerToQuestion3,
+        "Question 4":req.body.question4,
+        "Answer to Question 4":req.body.answerToQuestion4,
+        "Question 5":req.body.question5,
+        "Answer to Question 5":req.body.answerToQuestion5,
+    });
+    res.redirect('/home');
+}
