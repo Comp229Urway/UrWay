@@ -60,3 +60,25 @@ input[type='radio']:checked {
     height: 17px;
     border-radius: 17px;    
 }
+
+.ourCarousel {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+}
+
+.ourCarousel img {
+    width:auto;
+    max-height: 640px;
+}
+
+h5 {
+    font-size: 25px;
+    font-weight: 400;
+    color: #15ff00;
+}
+p {
+    font-size: 15px;
+    font-weight: 400;
+    color:#15ff00;
+}
