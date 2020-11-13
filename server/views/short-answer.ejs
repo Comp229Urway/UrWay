@@ -1,0 +1,50 @@
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+<main class="container">
+    <div class="jumbotron">
+        <h1 class="display-4"><%= surveys.title %></h1>     
+        
+    </div>
+      
+    <div class="row justify-content-md-center">
+        <div class="col-8">
+                            
+            <form method="POST">
+                <input type="text" id="surveyTitle" name="surveyTitle" value="<%= surveys.title %>" hidden> 
+                <h3><%= surveys.q1 %></h3>                
+                <label for="Question1">Please Type Your Answer</label>
+                <textarea class="form-control" id="Question1" rows="2"></textarea>
+
+                <h3><%= surveys.q2 %></h3>
+                <input type="text" id="question2" name="question2" value="<%= surveys.q2 %>" hidden>
+                <label for="Question2">Please Type Your Answer</label>
+                <textarea class="form-control" id="Question2" rows="2"></textarea>
+
+                <h3><%= surveys.q3 %></h3>
+                <input type="text" id="question3" name="question3" value="<%= surveys.q3 %>" hidden>
+                <label for="Question3">Please Type Your Answer</label>
+                <textarea class="form-control" id="Question3" rows="2"></textarea>
+
+                <h3><%= surveys.q4 %></h3>
+                <input type="text" id="question4" name="question4" value="<%= surveys.q4 %>" hidden>
+                <label for="Question1">Please Type Your Answer</label>
+                <textarea class="form-control" id="Question4" rows="2"></textarea>
+
+                <h3><%= surveys.q5 %></h3>
+                <input type="text" id="question5" name="question5" value="<%= surveys.q5 %>" hidden>
+                <label for="Question5">Please Type Your Answer</label>
+                <textarea class="form-control" id="Question5" rows="2"></textarea>
+
+                <button type="submit" class="btn btn-outline-success">Submit</button>
+                <a href="/home" class="btn btn-outline-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <div class="buffer"></div>
+</main>
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>
