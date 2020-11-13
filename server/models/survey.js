@@ -7,7 +7,9 @@ let surveyModel = mongoose.Schema({
     q1o1: String,
     q1o2:String,
     q1o3:String,
-    q1o4:String,
+    q1o4: String,
+    //q1text: String, For Next week
+    //q1tof: Boolean, For Next week
     q2: String,
     q2o1: String,
     q2o2:String,
@@ -34,3 +36,18 @@ let surveyModel = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Survey', surveyModel);
+
+/* FOR NEXT WEEK
+let surveyModelShort = mongoose.Schema({
+    title: String,
+    q1: String,
+    q2: String,
+    q3: String,
+    q4: String,
+    q5: String
+},
+{
+    collection: "surveys"
+});
+
+module.exports = mongoose.model('SurveyShort', surveyModelShort);*/
