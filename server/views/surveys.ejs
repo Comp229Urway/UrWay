@@ -1,0 +1,43 @@
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+     
+    <div class="row justify-content-md-center">
+        <div class="col-8">
+            <a href="/surveys/create" class="btn btn-outline-dark btn-lg">Add New Survey</a>
+            <br>
+            <br>
+            
+            <table class="table">
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Surveys already created</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for(let i=0; i < surveys.length; i++) { %>
+                    <tr>
+                        <td><%= surveys[i].title %></td>
+                        <td>
+                            <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-outline-success btn-sm">Edit</a>
+                        </td>
+                        <td>
+                            <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+
+            </table>
+            
+        </div>
+    </div>
+</main>
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>
