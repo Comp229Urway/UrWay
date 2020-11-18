@@ -5,7 +5,7 @@
     {
         console.log("App Started...");
 
-        let deleteButtons = document.querySelectorAll('.btn-danger');
+        let deleteButtons = document.getElementsByName("deleteBtn");
         
         for(const button of deleteButtons)
         {
@@ -13,7 +13,7 @@
                 if(!confirm("Are you sure?")) 
                 {
                     event.preventDefault();
-                    window.location.assign('/book-list');
+                    window.location.assign('/surveys');
                 }
             });
         }

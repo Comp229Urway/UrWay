@@ -8,22 +8,22 @@ let surveyController = require('../controllers/survey');
 router.get('/', surveyController.displaySurveysPage);
 
 /* GET Create MCQ Surveys page. CREATE*/
-router.get('/create', surveyController.displayCreatePage);
+router.get('/create-mcq', surveyController.displayCreatePage);
 
 /* POST process MCQ Surveys Create page. CREATE*/
-router.post('/create', surveyController.processCreatePage);
+router.post('/create-mcq', surveyController.processCreatePage);
 
 /* GET Create Short Answer Surveys page. CREATE*/
-router.get('/createShort', surveyController.displayCreateShortPage);
+//router.get('/createShort', surveyController.displayCreateShortPage);
 
 /* POST process Short Answer Surveys Create page. CREATE*/
-router.post('/create', surveyController.processCreateShortPage);
+//router.post('/create', surveyController.processCreateShortPage);
 
 /* GET Create True or False Surveys page. CREATE*/
-router.get('/createTrue', surveyController.displayCreateTruePage);
+//router.get('/createTrue', surveyController.displayCreateTruePage);
 
 /* POST process True or False Surveys Create page. CREATE*/
-router.post('/create', surveyController.processCreateTruePage);
+//router.post('/create', surveyController.processCreateTruePage);
 
 
 /* GET Edit page. UPDATE*/

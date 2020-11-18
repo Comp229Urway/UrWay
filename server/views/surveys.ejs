@@ -5,9 +5,9 @@
     <div class="row justify-content-md-center">
         <div class="col-8">
             <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/surveys/create" class="btn btn-outline-dark btn-lg">Add New Multiple Choices Questions Survey</a>
-            <a href="/surveys/createTrue" class="btn btn-outline-dark btn-lg">Add New True or False Survey</a>
-            <a href="/surveys/createShort" class="btn btn-outline-dark btn-lg">Add New Short Answers Survey</a>
+            <a href="/surveys/create-mcq" class="btn btn-outline-dark btn-lg">Add New Multiple Choices Questions Survey</a>
+            <a href="/surveys/create-tof" class="btn btn-outline-dark btn-lg">Add New True or False Survey</a>
+            <a href="/surveys/create-sa" class="btn btn-outline-dark btn-lg">Add New Short Answers Survey</a>
             </div>
             <br>
             <br>
@@ -30,7 +30,7 @@
                             <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-outline-success btn-sm">Edit</a>
                         </td>
                         <td>
-                            <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-outline-danger btn-sm" name="deleteBtn">Delete</a>
                         </td>
                     </tr>
                     <% } %>
