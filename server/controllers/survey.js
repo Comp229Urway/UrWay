@@ -2,10 +2,6 @@ let express = require('express');
 
 let Survey = require('../models/survey');
 
-let SurveyShort = require('../models/survey');
-
-let SurveyTrue = require('../models/survey');
-
 module.exports.displaySurveysPage = (req, res, next) => {
     
     Survey.find((err, data) => {
@@ -20,19 +16,18 @@ module.exports.displaySurveysPage = (req, res, next) => {
 
 // MCQ SURVEY Create and Read
 module.exports.displayCreatePage = (req, res, next) => {
-    res.render('create-edit', {title: 'Create Multiple Choices Questions Survey', surveys: '', buttonName: 'Create', x:''});
+    res.render('create', {title: 'Create Multiple Choices Questions Survey', surveys: '', buttonName: 'Create', type:'mcq'});
 }
 
 module.exports.processCreatePage = (req, res, next) => {
-    /*
     Survey.create({
         username: req.body.username,
         surveyID: req.body.surveyID,
-        surveyTitle: req.body.questionType,
+        surveyTitle: req.body.surveyTitle,
         description: req.body.description,
         questionType: req.body.questionType,
-        questions: questions,
-        answers: [q1]   
+        questions: req.body.questions,
+        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5]
     },
     (err, survey) => {
         if(err)
@@ -41,29 +36,27 @@ module.exports.processCreatePage = (req, res, next) => {
             res.end(err);
         }
         res.redirect('/surveys');
-    });*/
-    console.log({
+    });
+    /*console.log({
         username: req.body.username,
         surveyID: req.body.surveyID,
         surveyTitle: req.body.questionType,
         description: req.body.description,
         questionType: req.body.questionType,
         questions: req.body.questions,
-        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5],
-        x: req.body.x
+        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5]
     });
-    res.redirect('/surveys');
-    console.log("here");
+    res.redirect('/surveys');*/
 }
 
 // Short SURVEY Create and Read 
 module.exports.displayCreateShortPage = (req, res, next) => {
-    res.render('create-edit-short', {title: 'Create Short Answer Survey', surveys: '', buttonName: 'Create'});
+    res.render('create', {title: 'Create Short Answer Survey', surveys: '', buttonName: 'Create', type: 'sa'});
 }
 
-/*module.exports.processCreateShortPage = (req, res, next) => {
+module.exports.processCreateShortPage = (req, res, next) => {
     
-    SurveyShort.create({
+    /*SurveyShort.create({
         "title": req.body.surveyTitle,
         "q1":req.body.question1,
         "q1o1":req.body.q1choice1,
@@ -79,17 +72,42 @@ module.exports.displayCreateShortPage = (req, res, next) => {
             res.end(err);
         }
         res.redirect('/surveys');
-    }); 
-}*/
+    }); */
+    /*console.log({
+        username: req.body.username,
+        surveyID: req.body.surveyID,
+        surveyTitle: req.body.surveyTitle,
+        description: req.body.description,
+        questionType: req.body.questionType,
+        questions: req.body.questions,
+    });
+    res.redirect('/surveys');*/
+    Survey.create({
+        username: req.body.username,
+        surveyID: req.body.surveyID,
+        surveyTitle: req.body.surveyTitle,
+        description: req.body.description,
+        questionType: req.body.questionType,
+        questions: req.body.questions
+    },
+    (err, survey) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        res.redirect('/surveys');
+    });
+}
 
 // True or False SURVEY Create and Read 
 module.exports.displayCreateTruePage = (req, res, next) => {
-    res.render('create-edit-true-false', {title: 'Create True or False Survey', surveys: '', buttonName: 'Create'});
+    res.render('create', {title: 'Create True or False Survey', surveys: '', buttonName: 'Create', type: 'tof'});
 }
 
-/*module.exports.processCreateTruePage = (req, res, next) => {
+module.exports.processCreateTruePage = (req, res, next) => {
     
-    SurveyTrue.create({
+    /*Survey.create({
         "title": req.body.surveyTitle,
         "q1":req.body.question1,
         "q1o1":req.body.q1choice1,
@@ -105,8 +123,33 @@ module.exports.displayCreateTruePage = (req, res, next) => {
             res.end(err);
         }
         res.redirect('/surveys');
-    });  
-}*/
+    }); */
+    /*console.log({
+        username: req.body.username,
+        surveyID: req.body.surveyID,
+        surveyTitle: req.body.surveyTitle,
+        description: req.body.description,
+        questionType: req.body.questionType,
+        questions: req.body.questions,
+    });
+    res.redirect('/surveys');*/
+    Survey.create({
+        username: req.body.username,
+        surveyID: req.body.surveyID,
+        surveyTitle: req.body.surveyTitle,
+        description: req.body.description,
+        questionType: req.body.questionType,
+        questions: req.body.questions
+    },
+    (err, survey) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        res.redirect('/surveys');
+    });
+}
 
 // Read and Update for Edit Page
 module.exports.displayEditPage = (req, res, next) => {
@@ -117,7 +160,7 @@ module.exports.displayEditPage = (req, res, next) => {
           console.log(err);
           res.end();
         }
-        res.render('create-edit', {title:'Edit Survey', surveys:surveyToEdit, buttonName: 'Edit'})
+        res.render('edit', {title:'Edit Survey', surveys:surveyToEdit, buttonName: 'Edit'})
       });
 }
 

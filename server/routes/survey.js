@@ -14,16 +14,16 @@ router.get('/create-mcq', surveyController.displayCreatePage);
 router.post('/create-mcq', surveyController.processCreatePage);
 
 /* GET Create Short Answer Surveys page. CREATE*/
-//router.get('/createShort', surveyController.displayCreateShortPage);
+router.get('/create-sa', surveyController.displayCreateShortPage);
 
 /* POST process Short Answer Surveys Create page. CREATE*/
-//router.post('/create', surveyController.processCreateShortPage);
+router.post('/create-sa', surveyController.processCreateShortPage);
 
 /* GET Create True or False Surveys page. CREATE*/
-//router.get('/createTrue', surveyController.displayCreateTruePage);
+router.get('/create-tof', surveyController.displayCreateTruePage);
 
 /* POST process True or False Surveys Create page. CREATE*/
-//router.post('/create', surveyController.processCreateTruePage);
+router.post('/create-tof', surveyController.processCreateTruePage);
 
 
 /* GET Edit page. UPDATE*/
