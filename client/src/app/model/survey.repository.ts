@@ -17,14 +17,14 @@ export class SurveyRepository
   {
     dataSource.getSurveys().subscribe(data => {
       this.surveys = data;
-      this.surveyTitle = data.map(s => s.surveyTitle)
-        .filter((a, index, array) => array.indexOf(a) === index).sort();
+      this.questionType = data.map(s => s.questionType)
+        .filter((t, index, array) => array.indexOf(t) === index).sort();
     });
   }
 
-  getSurveys(surveyTitle: string = null) : Survey[] {
+  getSurveys(questionType: string = null) : Survey[] {
     return this.surveys
-      .filter(s => surveyTitle == null || surveyTitle === s.surveyTitle);
+      .filter(s => questionType == null || questionType === s.questionType);
   }
 
   getSurvey(surveyID: number): Survey
@@ -32,7 +32,7 @@ export class SurveyRepository
     return this.surveys.find(s => s._id === surveyID);
   }
 
-  getQuestionType(): string[]
+  getSurveyType(): string[]
   {
     return this.questionType;
   }

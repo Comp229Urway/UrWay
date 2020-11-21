@@ -17,8 +17,8 @@ export class SurveysListComponent
     return this.repository.getSurveys();
   }
 
-  get questionType(): string[]
+  get surveyType(): string[]
   {
-    return this.repository.getQuestionType();
+    return this.repository.getSurveyType();
   }
 }
