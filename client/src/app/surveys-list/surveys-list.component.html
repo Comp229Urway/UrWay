@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row text-white">
 
     <!-- Survey Types -->
@@ -13,27 +13,25 @@
       </button>
     </div>
 
+    <!-- Surveys -->
 
     <div class="col-9 bg-success p-2 text-white">
 
-<div class="col-9 p-2">
-  <div *ngFor='let survey of surveys' class="card m-1p-1 bg-dark">
-    <h4>
-      {{ survey.surveyTitle }}
-      <span class="badge badge-pill badge-primary float-right">
-        {{ survey.questionType}}
+      <div class="col-9 p-2">
+        <div *ngFor='let survey of surveys' class="card m-1p-1 bg-dark">
+          <h4>
+            {{ survey.surveyTitle }}
 
-      </span>
-    </h4>
-      <div class="card-text bg-dark p1">
-        {{ surveys.description}}
+            <span class="badge badge-pill badge-primary float-right">
+              {{ survey.questionType}}
+            </span>
+          </h4>
+
+          <div class="card-text bg-dark p1">
+            {{ survey.description}}
+          </div>
+        </div>
       </div>
-
-  </div>
-
-</div>
-
-      {{ surveyTypes.length }} Survey Types
     </div>
   </div>
 </div>
