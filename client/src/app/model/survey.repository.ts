@@ -6,34 +6,30 @@ import { StaticDataSource} from './static.datasource';
 export class SurveyRepository
 {
   private surveys: Survey[] = [];
-  private surveyID: number[] = [];
-  private surveyTitle: string[] = [];
-  private description: string[] = [];
-  private questionType: string[] = [];
-  private questions: [string][] = [];
-  private answers: [[string]][] = [];
+  private questionTypes: string[] = [];
 
   constructor(private dataSource: StaticDataSource)
   {
     dataSource.getSurveys().subscribe(data => {
       this.surveys = data;
-      this.questionType = data.map(s => s.questionType)
+      this.questionTypes = data.map(s => s.questionType)
         .filter((t, index, array) => array.indexOf(t) === index).sort();
     });
   }
 
-  getSurveys(questionType: string = null) : Survey[] {
+  getSurveys(questionType: string = null): Survey[]
+  {
     return this.surveys
       .filter(s => questionType == null || questionType === s.questionType);
   }
 
-  getSurvey(surveyID: number): Survey
+  getSurvey(id: number): Survey
   {
-    return this.surveys.find(s => s._id === surveyID);
+    return this.surveys.find(s => s._id === id);
   }
 
-  getSurveyType(): string[]
+  getSurveyTypes(): string[]
   {
-    return this.questionType;
+    return this.questionTypes;
   }
 }
