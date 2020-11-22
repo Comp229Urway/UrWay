@@ -43,9 +43,9 @@ export class SurveysListComponent
     this.changePage(1);
   }
 
-  get pageNumbers(): number[]
+  get pageCount(): number
   {
-    return Array(Math.ceil(this.repository
-      .getSurveys(this.selectedSurveyType).length / this.SurveysPerPage)).fill(0).map((x, i) => i + 1);
+    return Math.ceil(this.repository
+      .getSurveys(this.selectedSurveyType).length / this.SurveysPerPage);
   }
 }
