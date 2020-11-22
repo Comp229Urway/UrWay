@@ -19,7 +19,7 @@ export class SurveysListComponent
   {
     const pageIndex = (this.selectedPage - 1) * this.SurveysPerPage;
     return this.repository.getSurveys(this.selectedSurveyType)
-      .slice(pageIndex, pageIndex + this.SurveysPerPage);
+    .slice(pageIndex, pageIndex + this.SurveysPerPage);
   }
 
   get surveyTypes(): string[]
