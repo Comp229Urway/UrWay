@@ -9,7 +9,7 @@
        <button *ngFor='let surveyType of surveyTypes'
         class="btn btn-outline-primary btn-block"
         [class.active] = 'surveyType == selectedSurveyType' (click)='changeSurveyType(surveyType)'>
-        {{ surveys.questionType }}
+        {{ surveyType }}
       </button>
     </div>
 
