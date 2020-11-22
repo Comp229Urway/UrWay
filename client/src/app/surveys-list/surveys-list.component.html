@@ -1,9 +1,40 @@
 <div class="container-fluid">
   <div class="row text-white">
     <div class="col-3 bg-info p-2">
+      <button class="btn-btn-block btn-outline-primary" (click)='changeSurvey()'>
+        All Surveys
+      </button>
+
+       <button *ngFor='let survey of survey'
+        class="btn btn-outline-primary btn-block"
+        [class.active] = 'survey == selectedSurvey' (click)='changeSurvey(survey)'>
+        {{ survey.surveyTitle }}
+      </button>
+
+
       {{ survey.length }} Survey Name
     </div>
-    <div class="col-9 bg-success p-2">
+
+
+    <div class="col-9 bg-success p-2 text-white">
+
+<div class="col-9 p-2">
+  <div *ngFor='let survey of survey' class="card m-1p-1 bg-dark">
+    <h4>
+      {{ survey.surveyTitle }}
+      <span class="badge badge-pill badge-primary float-right">
+        {{ survey.questionType}}
+
+      </span>
+    </h4>
+      <div class="card-text bg-dark p1">
+        {{ survey.description}}
+      </div>
+
+  </div>
+
+</div>
+
       {{ surveyType.length }} Survey Types
     </div>
   </div>

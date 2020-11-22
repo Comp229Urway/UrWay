@@ -9,16 +9,22 @@ import { SurveyRepository } from './../model/survey.repository';
 })
 export class SurveysListComponent
 {
+  public selectedSurveys = null;
 
   constructor(private repository: SurveyRepository) { }
 
   get survey(): Survey[]
   {
-    return this.repository.getSurveys();
+    return this.repository.getSurveys(this.selectedSurveys);
   }
 
   get surveyType(): string[]
   {
     return this.repository.getSurveyType();
+  }
+
+  changeSurvey(newSurvey?: string): void
+  {
+    this.selectedSurveys = newSurvey;
   }
 }
