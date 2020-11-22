@@ -9,13 +9,13 @@ import { SurveyRepository } from './../model/survey.repository';
 })
 export class SurveysListComponent
 {
-  public selectedSurvey = null;
+  public selectedSurveyType = null;
 
   constructor(private repository: SurveyRepository) { }
 
   get surveys(): Survey[]
   {
-    return this.repository.getSurveys(this.selectedSurvey);
+    return this.repository.getSurveys(this.selectedSurveyType);
   }
 
   get surveyTypes(): string[]
@@ -25,6 +25,6 @@ export class SurveysListComponent
 
   changeSurveyType(newSurvey?: string): void
   {
-    this.selectedSurvey = newSurvey;
+    this.selectedSurveyType = newSurvey;
   }
 }
