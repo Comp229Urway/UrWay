@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Survey } from '../model/survey.model';
 import { SurveyRepository } from './../model/survey.repository';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-surveys-list',
@@ -13,7 +14,9 @@ export class SurveysListComponent
   public SurveysPerPage = 4;
   public selectedPage = 1;
 
-  constructor(private repository: SurveyRepository) { }
+  constructor(private repository: SurveyRepository, private router: Router) {
+
+   }
 
   get surveys(): Survey[]
   {
