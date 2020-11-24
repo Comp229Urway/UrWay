@@ -6,7 +6,7 @@ const PASSWORD = '123456';
 const mappings =
   {
     get: ["/api/orders", "/orders"],
-    post: ["/api/products", "/products", "/api/categories", "/categories"]
+    post: ["/api/survey-list", "/survey-list", "/api/categories", "/categories"]
   }
 
 function requiresAuth(method, url) {

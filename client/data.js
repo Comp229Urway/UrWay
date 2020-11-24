@@ -2,47 +2,31 @@ module.exports = function () {
 
   return {
 
-    products: [
+    "survey-list": [
 
-    { id: 1, name: "Kayak", category: "Watersports",
+    {id:1, surveyTitle:"Random Test Survey",questionType:"Multiple Choices Question",description: "Daily questions with Daily Answers"},
 
-      description: "A boat for one person", price: 275 },
+    { id: 2, surveyTitle:"Vampire Tester",questionType:"True or False",description: "Get it right or get a stake on your heart"},
 
-    { id: 2, name: "Lifejacket", category: "Watersports",
+    { id: 3, surveyTitle:"Lets know each other",questionType:"Short Answers",description: "Just so we can all get along."},
 
-      description: "Protective and fashionable", price: 48.95 },
+    { id: 4, surveyTitle:"Random Test Survey 2",questionType:"Multiple Choices Question",description: "Testing testing 1 2 3"},
 
-    { id: 3, name: "Soccer Ball", category: "Soccer",
+    { id: 5, surveyTitle:"Random Test Survey 3",questionType:"True or False",description: "Testing testing 1 2 "},
 
-      description: "FIFA-approved size and weight", price: 19.50 },
+    { id: 6, surveyTitle: "Random Test Survey 4", questionType: "Short Answers", description: "Testing testing 1 2 4" },
 
-    { id: 4, name: "Corner Flags", category: "Soccer",
+    { id: 7, surveyTitle:"Random Test Survey 5",questionType:"Short Answers",description: "Testing testing 1 2 5"},
 
-      description: "Give your playing field a professional touch",
+    { id: 8, surveyTitle:"Random Test Survey 6",questionType:"Multiple Choices Question",description: "Testing testing 1 2 6"},
 
-      price: 34.95 },
+    { id: 9, surveyTitle: "Random Test Survey 7", questionType: "Multiple Choices Question", description: "Testing testing 1 2 7" },
 
-    { id: 5, name: "Stadium", category: "Soccer",
+    { id: 10, surveyTitle: "Random Test Survey 8", questionType: "True or False", description: "Testing testing 1 2 8" },
 
-      description: "Flat-packed 35,000-seat stadium", price: 79500 },
+    { id: 11, surveyTitle:"Random Test Survey 9",questionType:"True or False",description: "Testing testing 1 2 9"},
 
-    { id: 6, name: "Thinking Cap", category: "Chess",
-
-      description: "Improve brain efficiency by 75%", price: 16 },
-
-    { id: 7, name: "Unsteady Chair", category: "Chess",
-
-      description: "Secretly give your opponent a disadvantage",
-
-      price: 29.95 },
-
-    { id: 8, name: "Human Chess Board", category: "Chess",
-
-      description: "A fun game for the family", price: 75 },
-
-    { id: 9, name: "Bling King", category: "Chess",
-
-      description: "Gold-plated, diamond-studded King", price: 1200 }
+    { id: 12, surveyTitle:"Random Test Survey 10",questionType:"True or False",description: "Testing testing 1 2 10"},
 
     ],
 
