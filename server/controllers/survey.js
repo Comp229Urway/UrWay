@@ -22,11 +22,11 @@ module.exports.processCreatePage = (req, res, next) => {
     Survey.create({
         "title": req.body.surveyTitle,
         "q1":req.body.question1,
-        "q1o1":req.body.q1choice1,
         "q2":req.body.question2,
         "q3":req.body.question3,
         "q4":req.body.question4,
-        "q5":req.body.question5  
+        "q5":req.body.question5
+         
     },
     (err, survey) => {
         if(err)
@@ -61,7 +61,8 @@ module.exports.processEditPage = (req, res, next) => {
         "q2":req.body.question2,
         "q3":req.body.question3,
         "q4":req.body.question4,
-        "q5":req.body.question5
+        "q5":req.body.question5      
+
       },
       (err) =>
       {
@@ -85,16 +86,42 @@ module.exports.processDeletePage = (req, res, next) => {
 
 module.exports.displayParticipatePage = (req, res, next) => {
     let id = req.params.id;
-    Survey.findById(id, (err, surveyToEdit) => {
+    Survey.findById(id, (err, surveyToParticipate) => {
         if(err)
         {
           console.log(err);
           res.end();
         }
-        res.render('participate', {title:'Participate', surveys:surveyToEdit})
+        
+        res.render('participate', {title:'Participate', surveys:surveyToParticipate, buttonName: 'Submit'})
       });
 }
 
-module.exports.processParticapatePage = (req, res, next) => {
-    res.redirect('/home');
+module.exports.processParticipatePage = (req, res, next) => {
+  let id = req.params.id;
+  Survey.updateOne(
+    {_id:id}, 
+    {
+      "_id": id,
+      "title": req.body.surveyTitle,
+      "q1":req.body.question1,
+      "q2":req.body.question2,
+      "q3":req.body.question3,
+      "q4":req.body.question4,
+      "q5":req.body.question5,
+     
+      "a1":req.body.answer1,
+      "a2":req.body.answer2, 
+      "a3":req.body.answer3, 
+      "a4":req.body.answer4,
+      "a5":req.body.answer5
+    },
+    (err) =>
+    {
+      console.log(err);
+      res.end();
+    });
+    res.redirect('/surveys');
 }
+    
+
