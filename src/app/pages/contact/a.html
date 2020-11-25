@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100" appearance="fill">  <!--surveyTitle-->
+          <mat-label>Title</mat-label>
+          <input matInput
+          placeholder="Survey Title"
+          id="surveyTitle"
+          formControlName = "surveyTitle"
+          required>
+          <mat-error>Please Enter a valid Title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">  <!--surveyDescription-->
+          <mat-label>Description</mat-label>
+          <textarea matInput
+          placeholder="Survey Description"
+          rows="5"
+          id="surveyDescription"
+          formControlName = "surveyDescription"></textarea>
+        </mat-form-field>
+
+        <div formArrayName='questionsDetail'>
+          <div *ngFor="let questionDetail of surveyForm.get('questionsDetail')['control']; let i=index">
+            <div formGroupName = "i">
+              <mat-form-field appearance="fill">
+                <mat-label>Question Type</mat-label>
+                <select matNativeControl required
+                formControlName="questionType">
+                  <option value="mcq">Multiple Choice</option>
+                  <option value="tof">True or False</option>
+                  <option value="saq">Short Answer</option>
+                </select>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput
+                placeholder="Enter Question"
+                rows="5"
+                id="question"
+                [formControlName] = "question">
+              </mat-form-field>
+              <div class="row justify-content-center">
+                <button type="button" mat-button color="primary" (click)="onAddChoice()"></button>
+              </div>
+              <div formArrayName='choices'>
+                <div *ngFor="let choice of surveyForm.get('questionsDetail')['controls'].get('choice')['controls']; let in=index">
+                  <input type="text" class="form-control" formControlName="in">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+          <!-- <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Question</mat-label>
+            <input matInput
+            placeholder="Enter Question"
+            id="question"
+            formControlName = "question"
+            required>
+          </mat-form-field>
+          <div class="row justify-content-center" formArrayName="choices">
+            <button type="button" mat-raised-button color="primary"(click)='onAddChoice()'>Add Choice</button>
+
+          </div>
+        </div> -->
+        <div class="col-8 mar-auto">
+          <div class="w-80">
+
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <button type="submit" mat-raised-button color="primary" [disabled]="surveyForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

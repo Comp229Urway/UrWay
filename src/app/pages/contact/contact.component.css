@@ -1,0 +1,15 @@
+.w-90
+{
+  margin: auto;
+  width: 90%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background-color: floralwhite;
+  border: gainsboro;
+  border-style: solid;
+}
+.mar-auto
+{
+  margin: auto;
+}

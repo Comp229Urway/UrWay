@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row justify-content-center">
+  <div class="col-8 form-group">
+    <input type="text" class="form-control" placeholder="Enter Title" [(ngModel)]="surveyTitle">
+  </div>
+  <div class="col-8 form-group">
+    <textarea class="form-control" cols="30" rows="3" placeholder="Enter Descrition" [(ngModel)]="surveyDescription"></textarea>
+  </div>
+  </div>
+
+    <div class="row justify-content-center">
+      <div class="col-8 form-group">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{questionType}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click) = "questionType = 'Multiple Choice'">Multiple Choice</a>
+            <a class="dropdown-item" (click) = "questionType = 'Short Answer'">Short Answer</a>
+            <a class="dropdown-item" (click) = "questionType = 'True or False'">True or False</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <div class="row justify-content-center">
+          <div class="col-8 form-group">
+            <input type="text" class="form-control" placeholder="Enter Question" [(ngModel)]="question">
+          </div>
+        </div>
+        <div *ngIf="questionType === 'Multiple Choice'">
+        <div>
+        <div class="row justify-content-center align-items-center form-group">
+          <div class="col-6">
+            <input type="text" class="form-control" placeholder="Enter Choices" [(ngModel)]="choice">
+          </div>
+          <div class="col-1">
+            <button class="btn btn-outline-success btn-sm" (click)="onAddChoice()">
+              <i class="far fa-check-square"></i> Add
+            </button>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <p>Choices:</p>
+          </div>
+        </div>
+
+          <div class="row justify-content-center" *ngFor="let choice of choices let i=index">
+            <div class="col-3 form-group">
+                <h1 class="text-center">{{choices[i]}}</h1>
+            </div>
+            <div class="col-2 form-group">
+                <button class="btn btn-outline-danger btn-sm" (click)="onDeleteChoice(i)">
+                  <i class="far fa-minus-square"></i> Delete
+                </button>
+            </div>
+          </div>
+          </div>
+        </div>
+          <div class="row justify-content-center form-group">
+            <div class="col-2">
+              <button class="btn btn-outline-warning btn-sm" (click)="onNextQuestion()">
+                <i class="fas fa-arrow-alt-circle-right"></i> Next
+              </button>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-2">
+              <button class="btn btn-outline-success btn-sm" (click)="onCreate()">
+                <i class="far fa-save"></i> Create
+              </button>
+            </div>
+          </div>
+    </div>
+</div>
+
+
