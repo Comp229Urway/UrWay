@@ -95,8 +95,9 @@ export class ContactComponent extends BasePageComponent implements OnInit {
       {
         (this.questionsDetailcontrols.at(index).get('choices') as FormArray).removeAt(i);
       }
-      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('true', Validators.required));
-      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('false', Validators.required));
+      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('True', Validators.required));
+      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('False', [Validators.required]));
+      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).disable();
     }
     else if(this.questionsDetailcontrols.at(index).get('questionType')?.value ==='saq')
     {
@@ -104,6 +105,8 @@ export class ContactComponent extends BasePageComponent implements OnInit {
       {
         (this.questionsDetailcontrols.at(index).get('choices') as FormArray).removeAt(i);
       }
+      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('Answer Here', Validators.required));
+      (this.questionsDetailcontrols.at(index).get('choices') as FormArray).disable();
     }
   }
 }

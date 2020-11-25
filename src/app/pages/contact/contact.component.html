@@ -3,7 +3,7 @@
     <div class="col-8">
       <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
         <div class="row justify-content-end form-group">
-          <button type="submit" mat-raised-button color="primary" [disabled]="!surveyForm.valid">Submit</button>
+          <button type="submit" mat-raised-button color="primary" [disabled]="!surveyForm.valid">Create</button>
         </div>
         <mat-form-field class="w-100" appearance="fill">  <!--surveyTitle-->
           <mat-label>Title</mat-label>
@@ -57,9 +57,8 @@
                   formControlName="question">
                   <mat-error>Please Enter Question</mat-error>
                   </mat-form-field>
-                  <div [hidden]="hideChoices(i)">
                   <div class="row justify-content-center form-group">
-                    <button type="button" mat-raised-button color="primary" (click)="onAddChoices(i)">Add Choices</button>
+                    <button type="button" mat-raised-button color="primary" [disabled]="hideChoices(i)" (click)="onAddChoices(i)">Add Choices</button>
                   </div>
                   <div formArrayName="choices">
                     <div *ngFor="let choice of getChoicesControl(i); let in=index">
@@ -75,14 +74,13 @@
                           </mat-form-field>
                         </div>
                         <div class="col-2 align-self-center">
-                          <button type="button" mat-raised-button color="warn"  [disabled]="in < 2"  (click)="onRemoveChoice(i, in)">
+                          <button type="button" mat-raised-button color="warn"  [disabled]="in < 2" (click)="onRemoveChoice(i, in)">
                             <span class="material-icons">clear</span>
                           </button>
                         </div>
                       </div>
                     </div>
                 </div>
-              </div>
             </div>
             </div>
           </div>
