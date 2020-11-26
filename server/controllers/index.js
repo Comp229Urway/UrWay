@@ -22,3 +22,93 @@ module.exports.displayAboutPage = (req, res, next) => {
 module.exports.displayContactPage = (req, res, next) => {
     res.render('contact', { title: 'Contact'});
 }
+
+module.exports.DisplayLoginPage = (req, res, next) => {
+  // check if the user is already logged in
+    if(!req.user){
+      res.render('auth/login', 
+      {
+        title: 'Login',
+        messages: req.flash('loginMessage'),
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+    return res.redirect('/');
+  }
+
+module.exports.ProcessLoginPage = (req, res, next) => 
+  {
+    passport.authenticate('local', 
+    (err, user, info) => {
+      // server error?
+      if(err)
+      {
+        return next(err);
+      }
+
+      // is there login errors?
+      if(!user)
+      {
+        req.flash('loginMessage', 'Authentication Error');
+        return res.redirect('/login');
+      }
+
+      req.login(user, (err) => {
+        // db server error?
+        if(err)
+        {
+          return next(err);
+        }
+
+        return res.redirect('/home');
+      });
+
+    })(req, res, next);
+}
+
+module.exports.DisplayRegisterPage = (req, res, next) => {
+    // check if the user is already logged in
+    if(!req.user)
+    {
+      res.render('auth/register', 
+      {
+        title: 'Register',
+        messages: req.flash('registerMessage'),
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+    return res.redirect('/');
+  }
+
+module.exports.ProcessRegisterPage = (req, res, next) => {
+    // Instantiate a new user object
+    let newUser = new User({
+      username: req.body.username,
+      email: req.body.email,
+      displayName: req.body.displayName
+    });
+
+    User.register(newUser, req.body.password, (err) => {
+      if(err)
+      {
+        console.log('Error: Inserting New User');
+        if(err.name == "UserExistsError")
+        {
+          req.flash('registerMessage', 'Registration Error');
+          console.log('Error: User Already Exists');
+        }
+        return res.redirect('/register');
+      }
+      else
+      {
+        return passport.authenticate('local')(req, res, ()=>{
+          res.redirect('../home');
+        });
+      }
+    })
+  }
+
+module.exports.PerformLogout = (req, res, next) => {
+  req.logout();
+  res.redirect('/login');
+  }
