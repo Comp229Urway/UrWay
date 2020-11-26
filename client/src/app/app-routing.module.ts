@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SurveyComponent } from './pages/survey/survey.component';
 import { SurveysListComponent } from './surveys-list/surveys-list.component';
 import { SurveyFirstGuards } from './guards/SurveyFirst.guard';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data:{title:'Home'} },
@@ -18,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [FormsModule,RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [SurveyFirstGuards]
 })

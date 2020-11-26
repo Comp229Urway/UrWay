@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class SurveysListComponent
 {
   public selectedSurveyType = null;
-  public SurveysPerPage = 4;
+  public SurveysPerPage = 6;
   public selectedPage = 1;
 
   constructor(private repository: SurveyRepository, private router: Router) {

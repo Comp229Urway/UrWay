@@ -1,6 +1,11 @@
 let express = require('express');
 let router = express.Router();
 
+// Create the modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+
 
 let indexController = require('../controllers/index');
 
