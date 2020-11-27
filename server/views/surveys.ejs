@@ -29,13 +29,15 @@
                         <td>
                             <a href="surveys/participate/<%= surveys[i]._id %>" class="btn btn-outline-dark btn-sm">Participate</a>
                         </td>
-
+                        
+                        <% if (typeof displayName == 'string' && displayName) { %>
                         <td>
                             <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-outline-success btn-sm">Edit</a>
                         </td>
                         <td>
                             <a href="surveys/delete/<%= surveys[i]._id %>" class="btn btn-outline-danger btn-sm" name="deleteBtn">Delete</a>
                         </td>
+                        <% } %>
                     </tr>
                     <% } %>
                 </tbody>

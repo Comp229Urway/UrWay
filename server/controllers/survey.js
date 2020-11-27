@@ -1,5 +1,4 @@
 let express = require('express');
-
 let Survey = require('../models/survey');
 
 module.exports.displaySurveysPage = (req, res, next) => {

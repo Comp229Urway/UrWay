@@ -12,13 +12,6 @@ let UserSchema = Schema({
         trim: true,
         required: 'username is required'
     },
-    password:
-    {
-        type: String,
-        default: '',
-        trim: true,
-        required: 'password is required'   
-    },
     email:
     {
         type: String,
@@ -46,10 +39,10 @@ let UserSchema = Schema({
 },
 {
     collection: 'users'
-});
+    });
 
-let options = ({ missingPasswordError: 'Wrong /Missing Password' });
 
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports.User = Model('User', UserSchema);
+//module.exports = mongoose.model('Survey', surveyModel);
