@@ -10,7 +10,7 @@ const routing = RouterModule.forChild([
   { path: 'main', component: AuthComponent, canActivate: [AuthGuard],
    children: [
 
-      { path: '**', redirectTo: 'book-list' }]
+      { path: '**', redirectTo: 'survey-list' }]
   },
   { path: '**', redirectTo: 'auth' },
 ]);

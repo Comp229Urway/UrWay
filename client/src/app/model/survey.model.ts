@@ -10,4 +10,18 @@ export class Survey
     public questions?: [string],
     public answers?: [[string]]
   ) { }
+
+  public toString(): string
+  {
+    return `
+    Survey
+    -------------------------------
+    Title               : ${this.surveyTitle}
+    Username            : ${this.username}
+    Description         : ${this.description}
+    Type of Survey      : ${this.questionType}
+    -------------------------------
+    `;
+  }
  }
+
