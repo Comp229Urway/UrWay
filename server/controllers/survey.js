@@ -10,13 +10,15 @@ module.exports.displaySurveysPage = (req, res, next) => {
             console.error(err);
             res.end();
         }
-        res.render('surveys', {title: 'Surveys', surveys: data});
+        res.render('surveys', {title: 'Surveys', surveys: data,
+        displayName: req.user ? req.user.displayName : ''});
     });  
 }
 
 // MCQ SURVEY Create and Read
 module.exports.displayCreatePage = (req, res, next) => {
-    res.render('create', {title: 'Create Multiple Choices Questions Survey', surveys: '', buttonName: 'Create', type:'mcq'});
+    res.render('create', {title: 'Create Multiple Choices Questions Survey', surveys: '', buttonName: 'Create', type:'mcq',
+        displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.processCreatePage = (req, res, next) => {
@@ -51,7 +53,8 @@ module.exports.processCreatePage = (req, res, next) => {
 
 // Short SURVEY Create and Read 
 module.exports.displayCreateShortPage = (req, res, next) => {
-    res.render('create', {title: 'Create Short Answer Survey', surveys: '', buttonName: 'Create', type: 'sa'});
+    res.render('create', {title: 'Create Short Answer Survey', surveys: '', buttonName: 'Create', type: 'sa',
+        displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.processCreateShortPage = (req, res, next) => {
@@ -102,7 +105,8 @@ module.exports.processCreateShortPage = (req, res, next) => {
 
 // True or False SURVEY Create and Read 
 module.exports.displayCreateTruePage = (req, res, next) => {
-    res.render('create', {title: 'Create True or False Survey', surveys: '', buttonName: 'Create', type: 'tof'});
+    res.render('create', {title: 'Create True or False Survey', surveys: '', buttonName: 'Create', type: 'tof',
+        displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.processCreateTruePage = (req, res, next) => {
@@ -160,7 +164,8 @@ module.exports.displayEditPage = (req, res, next) => {
           console.log(err);
           res.end();
         }
-        res.render('edit', {title:'Edit Survey', surveys:surveyToEdit, buttonName: 'Edit'})
+        res.render('edit', {title:'Edit Survey', surveys:surveyToEdit, buttonName: 'Edit',
+        displayName: req.user ? req.user.displayName : ''})
       });
 }
 
@@ -215,7 +220,8 @@ module.exports.displayParticipatePage = (req, res, next) => {
           console.log(err);
           res.end();
         }
-        res.render('participate', {title:'Participate', surveys:surveyToEdit})
+        res.render('participate', {title:'Participate', surveys:surveyToEdit,
+        displayName: req.user ? req.user.displayName : ''})
       });
 }
 

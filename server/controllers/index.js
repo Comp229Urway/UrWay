@@ -17,16 +17,19 @@ module.exports.displayHomePage = (req, res, next) => {
             console.error(err);
             res.end();
         }
-        res.render('index', {title: 'Home', surveys: data});
+        res.render('index', {title: 'Home', surveys: data,
+  displayName: req.user ? req.user.displayName : '' });
     });
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('about', { title: 'About'});
+    res.render('about', { title: 'About',
+  displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('contact', { title: 'Contact'});
+    res.render('contact', { title: 'Contact',
+  displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.DisplayLoginPage = (req, res, next) => {

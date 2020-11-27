@@ -27,6 +27,10 @@
                     <tr>
                         <td><%= surveys[i].surveyTitle %></td>
                         <td>
+                            <a href="surveys/participate/<%= surveys[i]._id %>" class="btn btn-outline-dark btn-sm">Participate</a>
+                        </td>
+
+                        <td>
                             <a href="surveys/edit/<%= surveys[i]._id %>" class="btn btn-outline-success btn-sm">Edit</a>
                         </td>
                         <td>

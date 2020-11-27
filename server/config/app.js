@@ -50,6 +50,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 // Setup express session
 let Auth = require('./auth');
+
 app.use(session({
   secret: Auth.Secret,
   saveUninitialized: false,
@@ -66,8 +67,6 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/surveys', surveyRouter);
-
-
 
 // Implement an user authentication Strategy
 passport.use(User.createStrategy());
