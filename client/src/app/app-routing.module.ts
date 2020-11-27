@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'contact', component:ContactComponent, data:{title:'Contact'}  },
   { path: 'survey', component: SurveyComponent, data: { title: 'Surveys' } },
   { path: 'survey-list', component: SurveysListComponent, data: { title: 'Surveys List' }, canActivate: [SurveyFirstGuards] },
+   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   {path:'', redirectTo: 'home', pathMatch: 'full'},
   {path:'**', redirectTo: 'home'},
 ];

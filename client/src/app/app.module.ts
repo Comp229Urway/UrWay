@@ -5,31 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SurveyListModule } from './surveys-list/surveys-list.module';
 
-import { HeaderComponent } from './partials/header/header.component';
-import { FooterComponent } from './partials/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SurveyComponent } from './pages/survey/survey.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { BasePageComponent } from './partials/base-page/base-page.component';
-import { AuthComponent } from './admin/auth/auth.component';
+import { PagesModule } from './pages/pages.modules';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function jwtTokenGetter(): string
+{
+  return localStorage.getItem('id_token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    SurveyComponent,
-    AboutComponent,
-    ContactComponent,
-    BasePageComponent,
-    AuthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SurveyListModule
+    SurveyListModule,
+    PagesModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

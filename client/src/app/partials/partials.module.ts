@@ -4,10 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { BasePageComponent } from './base-page/base-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
-  declarations: [BasePageComponent,FooterComponent,HeaderComponent],
-  exports: [BasePageComponent,FooterComponent,HeaderComponent]
+  imports: [BrowserModule, FormsModule, RouterModule],
+  declarations: [
+    BasePageComponent,
+    FooterComponent,
+    HeaderComponent],
+  exports: [
+    BasePageComponent,
+    FooterComponent,
+    HeaderComponent]
 })
 export class PartialsModule {}
