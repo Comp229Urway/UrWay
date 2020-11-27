@@ -1,5 +1,11 @@
 let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
+let passport = require('passport');
+
+// create the User Model Instance
+let userModel = require('../models/user');
+let User = userModel.User; 
 
 let Survey = require('../models/survey');
 
@@ -89,26 +95,28 @@ module.exports.ProcessRegisterPage = (req, res, next) => {
     });
 
     User.register(newUser, req.body.password, (err) => {
-      if(err)
-      {
-        console.log('Error: Inserting New User');
-        if(err.name == "UserExistsError")
-        {
-          req.flash('registerMessage', 'Registration Error');
-          console.log('Error: User Already Exists');
+        if (err) {
+            console.log('Error: Inserting New User');
+            if (err.name == "UserExistsError") {
+                req.flash('registerMessage', 'Registration Error');
+                console.log('Error: User Already Exists');
+            }
+            return res.render('auth/register',
+                {
+                    title: 'Register',
+                    messages: req.flash('registerMessage'),
+                    displayName: req.user ? req.user.displayName : ''
+                });
         }
-        return res.redirect('/register');
-      }
-      else
-      {
-        return passport.authenticate('local')(req, res, ()=>{
-          res.redirect('../home');
-        });
-      }
-    })
+        else {
+            return passport.authenticate('local')(req, res, () => {
+                res.redirect('../home');
+            });
+        }
+    });
   }
 
 module.exports.PerformLogout = (req, res, next) => {
   req.logout();
-  res.redirect('/login');
+  res.redirect('/');
   }

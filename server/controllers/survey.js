@@ -219,7 +219,7 @@ module.exports.displayParticipatePage = (req, res, next) => {
       });
 }
 
-module.exports.processParticapatePage = (req, res, next) => {
+module.exports.processParticipatePage = (req, res, next) => {
     console.log({
         "Title": req.body.surveyTitle,
         "Question 1":req.body.question1,

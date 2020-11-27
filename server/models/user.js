@@ -1,4 +1,3 @@
-
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
@@ -51,6 +50,6 @@ let UserSchema = Schema({
 
 let options = ({ missingPasswordError: 'Wrong /Missing Password' });
 
-UserSchema.plugin(passportLocalMongoose, options);
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports.User = Model('User', UserSchema);

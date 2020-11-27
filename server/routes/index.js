@@ -21,10 +21,10 @@ router.get('/about', indexController.displayAboutPage);
 /* GET Contact Us page. */
 router.get('/contact', indexController.displayContactPage);
 
-/* GET Display Login page. */
+/* GET Route for displaying the Login Page*/
 router.get('/login', indexController.DisplayLoginPage);
 
-/* PROCESS Login page. */
+/* POST Route for displaying the Login Page*/
 router.post('/login', indexController.ProcessLoginPage);
 
 /* GET Display Register page. */

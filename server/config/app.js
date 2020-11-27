@@ -24,9 +24,9 @@ let surveyRouter = require('../routes/survey');
 
 let app = express();
 
-// database setup
+// Create the database setup and connection
 let mongoose = require('mongoose');
-let DB = require('./db');
+let DB = require('./DB');
 
 // point mongoose to the DB URI
 mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -63,6 +63,12 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/surveys', surveyRouter);
+
+
+
 // Implement an user authentication Strategy
 passport.use(User.createStrategy());
 
@@ -70,20 +76,16 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use('/', indexRouter);
-app.use('/survey', surveyRouter)
-app.use('/users', usersRouter);
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
   // render the error page
   res.status(err.status || 500);
