@@ -1,0 +1,24 @@
+<div class="container">
+  <a class="btn btn-primary" href="/surveys/create"> Create </a>
+  <div form *ngFor="let survey of surveyCollection">
+    <div class="form-group">
+      <mat-accordion>
+        <mat-expansion-panel expandedHeight>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h1>{{survey.surveyTitle}}</h1>
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{survey.surveyDescription}}</p>
+          <mat-action-row>
+            <button mat-button color="Primary" (click)="onEdit(survey._id)">Edit</button>
+            <button mat-button color="warn" (click)="onDeleteSurvey(survey._id)">Delete</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+  </div>
+</div>

@@ -29,7 +29,7 @@
                                 <input type="text" class="form-control" id="question1" name="questions" placeholder="Question 1" value="<%= surveys.questions %>" required>
                             </div>
                         </div>
-                        <% if(locals.type == "mcq" || surveys.questionType == "mcq"){ %>
+                        <% if(locals.type == "mcq"){ %>
                         
                         <div class="col-10">
                             <div class="form-group">
@@ -51,7 +51,12 @@
                                 <input type="text" class="form-control" id="q1choice4" name="q1" placeholder="Option 4" value="<%= surveys.answers %>" required>
                             </div>
                         </div>
-                        <% } %> 
+                        <% }if(locals.type == "sa"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q1" value="Enter Text Here..." hidden>
+                        <% }if(locals.type == "tof"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q1" value="true" hidden>
+                            <input type="text" class="form-control" id="q1choice4" name="q1" value="false" hidden>
+                        <% } %>
                     </div>
                 </div>
                 <!--Question 02-->
@@ -83,7 +88,12 @@
                                 <input type="text" class="form-control" id="q2choice4" name="q2" placeholder="Option 4" value="<%= surveys.answers %>" required>
                             </div>
                         </div>
-                        <% } %> 
+                        <% }if(locals.type == "sa"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q2" placeholder="Option 4" value="Enter Text Here..." hidden>
+                        <% }if(locals.type == "tof"){ %> 
+                                <input type="text" class="form-control" id="q1choice4" name="q2" placeholder="Option 4" value="true" hidden>
+                                <input type="text" class="form-control" id="q1choice4" name="q2" placeholder="Option 4" value="false" hidden>
+                        <% } %>
                     </div>
                 </div>
 
@@ -116,7 +126,12 @@
                                 <input type="text" class="form-control" id="q3choice4" name="q3" placeholder="Option 4" value="<%= surveys.answers %>" required>
                             </div>
                         </div>
-                        <% } %> 
+                        <% }if(locals.type == "sa"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q3" placeholder="Option 4" value="Enter Text Here..." hidden>
+                            <% }if(locals.type == "tof"){ %> 
+                                <input type="text" class="form-control" id="q1choice4" name="q3" placeholder="Option 4" value="true" hidden>
+                                <input type="text" class="form-control" id="q1choice4" name="q3" placeholder="Option 4" value="false" hidden>
+                        <% } %>
                     </div>
                 </div>
 
@@ -149,7 +164,12 @@
                                 <input type="text" class="form-control" id="q4choice4" name="q4" placeholder="Option 4" value="<%= surveys.answers %>" required>
                             </div>
                         </div>
-                        <% } %> 
+                        <% }if(locals.type == "sa"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q4" placeholder="Option 4" value="Enter Text Here..." hidden>
+                            <% }if(locals.type == "tof"){ %> 
+                                <input type="text" class="form-control" id="q1choice4" name="q4" placeholder="Option 4" value="true" hidden>
+                                <input type="text" class="form-control" id="q1choice4" name="q4" placeholder="Option 4" value="false" hidden>
+                        <% } %>
                     </div>
                 </div>
 
@@ -182,6 +202,11 @@
                                 <input type="text" class="form-control" id="q5choice4" name="q5" placeholder="Option 4" value="<%= surveys.answers %>" required>
                             </div>
                         </div>
+                        <% }if(locals.type == "sa"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q5" placeholder="Option 4" value="Enter Text Here..." hidden>
+                        <% }if(locals.type == "tof"){ %> 
+                            <input type="text" class="form-control" id="q1choice4" name="q5" placeholder="Option 4" value="true" hidden>
+                            <input type="text" class="form-control" id="q1choice4" name="q5" placeholder="Option 4" value="false" hidden>
                         <% } %> 
                     </div>
                 </div>
