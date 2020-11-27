@@ -12,6 +12,7 @@ import { SurveyComponent } from './pages/survey/survey.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
+import { AuthComponent } from './admin/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BasePageComponent } from './partials/base-page/base-page.component';
     AboutComponent,
     ContactComponent,
     BasePageComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
