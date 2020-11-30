@@ -15,6 +15,12 @@ let mongoose = require('mongoose');
 }); */
 
 let surveyModel = mongoose.Schema({
+    username: String,
+    dateCreate: Date,
+    dateLastModified: Date,
+    dateActiveStart: Date,
+    dateActiveEnd: Date,
+    isActive: Boolean,
     surveyTitle: String,
        surveyDescription: String,
        questionsDetail: [{
@@ -24,6 +30,6 @@ let surveyModel = mongoose.Schema({
        }]
 },
 {
-    collection: "surveys04"
+    collection: "surveys"
 });
 module.exports = mongoose.model('Survey', surveyModel);

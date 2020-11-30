@@ -9,11 +9,12 @@ import { BasePageComponent } from '../../partials/base-page/base-page.component'
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
   title= "Home";
-  constructor(route: ActivatedRoute) { 
+  constructor(route: ActivatedRoute) {
     super(route);
   }
 
   ngOnInit(): void {
+
   }
 
 }

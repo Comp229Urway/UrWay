@@ -12,7 +12,7 @@ module.exports.displaySurveysPage = (req, res, next) => {
             res.end();
         }
         console.log(data);
-    res.status(200).json({message: "Get Success", survey: data});
+    res.status(200).json({message: "Fetch All Successful", survey: data});
     });
 }
 
@@ -22,34 +22,7 @@ module.exports.displayCreatePage = (req, res, next) => {
 }
 
 module.exports.processCreatePage = (req, res, next) => {
-    /* Survey.create({
-        username: req.body.username,
-        surveyID: req.body.surveyID,
-        surveyTitle: req.body.surveyTitle,
-        description: req.body.description,
-        questionType: req.body.questionType,
-        questions: req.body.questions,
-        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5]
-    },
-    (err, survey) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        res.redirect('/surveys');
-    }); */
-    /*console.log({
-        username: req.body.username,
-        surveyID: req.body.surveyID,
-        surveyTitle: req.body.questionType,
-        description: req.body.description,
-        questionType: req.body.questionType,
-        questions: req.body.questions,
-        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5]
-    });
-    res.redirect('/surveys');*/
-    res.json({message: "Post Success"});
+    res.json({message: "Create Successful"});
     Survey.create(req.body);
     console.log(req.body);
 }
@@ -61,32 +34,6 @@ module.exports.displayCreateShortPage = (req, res, next) => {
 
 module.exports.processCreateShortPage = (req, res, next) => {
     
-    /*SurveyShort.create({
-        "title": req.body.surveyTitle,
-        "q1":req.body.question1,
-        "q1o1":req.body.q1choice1,
-        "q2":req.body.question2,
-        "q3":req.body.question3,
-        "q4":req.body.question4,
-        "q5":req.body.question5  
-    },
-    (err, survey) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        res.redirect('/surveys');
-    }); */
-    /*console.log({
-        username: req.body.username,
-        surveyID: req.body.surveyID,
-        surveyTitle: req.body.surveyTitle,
-        description: req.body.description,
-        questionType: req.body.questionType,
-        questions: req.body.questions,
-    });
-    res.redirect('/surveys');*/
     Survey.create({
         username: req.body.username,
         surveyID: req.body.surveyID,
@@ -112,33 +59,7 @@ module.exports.displayCreateTruePage = (req, res, next) => {
 }
 
 module.exports.processCreateTruePage = (req, res, next) => {
-    
-    /*Survey.create({
-        "title": req.body.surveyTitle,
-        "q1":req.body.question1,
-        "q1o1":req.body.q1choice1,
-        "q2":req.body.question2,
-        "q3":req.body.question3,
-        "q4":req.body.question4,
-        "q5":req.body.question5  
-    },
-    (err, survey) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        res.redirect('/surveys');
-    }); */
-    /*console.log({
-        username: req.body.username,
-        surveyID: req.body.surveyID,
-        surveyTitle: req.body.surveyTitle,
-        description: req.body.description,
-        questionType: req.body.questionType,
-        questions: req.body.questions,
-    });
-    res.redirect('/surveys');*/
+   
     Survey.create({
         username: req.body.username,
         surveyID: req.body.surveyID,
@@ -167,39 +88,20 @@ module.exports.displayEditPage = (req, res, next) => {
           console.log(err);
           res.end();
         }
-        res.json({message: 'Get Edit Data Success', survey: surveyToEdit});
+        res.json({message: 'Fetch to Edit Successful', survey: surveyToEdit});
       }); 
 }
 
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
-    /*Survey.updateOne(
-      {_id:id}, 
-      {
-        username: req.body.username,
-        surveyID: req.body.surveyID,
-        surveyTitle: req.body.surveyTitle,
-        description: req.body.description,
-        questionType: req.body.questionType,
-        questions: req.body.questions,
-        answers: [req.body.q1, req.body.q2, req.body.q3, req.body.q4, req.body.q5]
-      },
+    Survey.updateOne(
+      {_id:id}, req.body,
       (err) =>
       {
         console.log(err);
         res.end();
-      });*/
-      console.log(
-          {
-            username: req.body.username,
-            surveyID: req.body.surveyID,
-            surveyTitle: req.body.surveyTitle,
-            description: req.body.description,
-            questions: req.body.questions,
-            answers: [[req.body.q1], [req.body.q2], [req.body.q3], [req.body.q4], [req.body.q5]]
-          }
-      );
-      res.redirect('/surveys');
+      }); 
+      res.json({message: "Update Successful"});
 }
 
 

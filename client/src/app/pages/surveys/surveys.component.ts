@@ -23,24 +23,32 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
     this.onGetData();
   }
   onGetData()
-  {
+  {console.log("Fetching All Data...");
     this.http.get<{message:string, survey: SurveyModel[]}>('http://localhost:4000/surveys').subscribe(getData => {
       this.surveyCollection = getData.survey;
       console.log(getData.message);
-      console.log(this.surveyCollection)});
+      //console.log(this.surveyCollection)
+    }
+      );
   }
   onDeleteSurvey(id: string)
   {
+    if(confirm("Are you sure?"))
+    {
+      this.router.navigate(['/surveys']);
+
+    console.log("Deleting Survey...");
+
     this.http.get<{message: string}>('http://localhost:4000/surveys/delete/' + id).subscribe((Response) => {
       const updatedSurvey = this.surveyCollection.filter(survey => survey._id !== id);
       this.surveyCollection = updatedSurvey;
       this.updatedCollection.next([...updatedSurvey]);
       console.log(Response.message);
      });
+    }
   }
 onEdit(id: string)
 {
-
   this.router.navigate(['/surveys/edit/' +id]);
 }
 }

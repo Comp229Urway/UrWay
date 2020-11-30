@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators, FormBuilder, AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BasePageComponent } from 'src/app/partials/base-page/base-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,58 +16,96 @@ import { PassDataService } from 'src/app/Services/passData.service';
   providers: [PassDataService]
 })
 export class CreateComponent implements OnInit {
-
-  surveyForm: FormGroup;
-  /*formTemplete : {
-    surveyTitle: string,
-       surveyDescription: string,
-       questionsDetail: [{
-        questionType:string,
-        question: string,
-        choices: string[]
-       }]
-  };*/
-  surveyToEdit: SurveyModel;
+  surveyToEdit: any;
+  isTouched = false;
+  surveyForm: FormGroup =  new FormGroup({
+    username: new FormControl(null, Validators.required),
+    dateCreate: new FormControl(new Date),
+    surveyTitle: new FormControl(null, Validators.required),
+    surveyDescription: new FormControl(null, Validators.required),
+    questionsDetail: new FormArray([new FormGroup({
+      questionType: new FormControl(null, Validators.required),
+      question: new FormControl(null, Validators.required),
+      choices: new FormArray([new FormControl(null, Validators.required)])
+    })])
+  });
+  buttonName: string = 'Create';
   editID: string;
   editSurveyTitle: string;
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private passData: PassDataService) {
-
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
    }
    ngOnInit(): void {
-    this.surveyForm = this.formBuilder.group({
-      'surveyTitle': new FormControl(null, Validators.required),
-      'surveyDescription': new FormControl(null),
-      'questionsDetail': this.formBuilder.array([
-        this.formBuilder.group({
-         'questionType': new FormControl(null, Validators.required),
-          'question': new FormControl(null, Validators.required),
-          'choices': this.formBuilder.array([])
-        })
-      ])
-    });
-    console.log(this.passData.getSurveyData());
       this.route.params.subscribe(
        (params: Params)=> {
          this.editID = params['id'];
          console.log("ID: ", this.editID);
        }
      );
+     if(this.editID != undefined)
+     {
      this.getEditData();
+    }
+
     };
-     getEditData()
+      getEditData()
     {
+      console.log("Fetching Data to Edit...");
       this.http.get<{message:string, survey: SurveyModel}>('http://localhost:4000/surveys/edit/' + this.editID).subscribe(getData => {
       this.surveyToEdit = getData.survey;
       console.log(getData.message);
-      console.log("Survey Title:",this.surveyToEdit); });
+        this.buttonName = "Edit";
+        this.surveyForm
+            this.surveyForm =  new FormGroup({
+              surveyTitle: new FormControl(this.surveyToEdit.surveyTitle),
+              surveyDescription: new FormControl(this.surveyToEdit.surveyDescription),
+              questionsDetail: new FormArray([new FormGroup({
+                questionType: new FormControl(),
+                question: new FormControl(),
+                choices: new FormArray([])
+              })])
+            });
+            for(let i=0; i < this.surveyToEdit.questionsDetail.length; i ++)
+            {
+              let editChoice = this.formBuilder.array([]);
+              const control = new FormGroup({
+                'questionType': new FormControl(this.surveyToEdit.questionsDetail[i].questionType, Validators.required),
+                'question': new FormControl(this.surveyToEdit.questionsDetail[i].question, Validators.required),
+                'choices': editChoice
+              });
+              for(let a=0; a<this.surveyToEdit.questionsDetail[i].choices.length; a++)
+              {
+              editChoice.push(new FormControl(this.surveyToEdit.questionsDetail[i].choices[a], Validators.required));
+              }
+
+              (this.surveyForm.get('questionsDetail') as FormArray).push(control);
+              if(this.surveyToEdit.questionsDetail[i].questionType === "saq" || this.surveyToEdit.questionsDetail[i].questionType === "tof")
+                {
+                  (this.questionsDetailcontrols.at(i+1).get('choices') as FormArray).disable();
+                }
+            }
+
+            this.questionsDetailcontrols.removeAt(0);
+      });
     }
 
   onSubmit()
   {
-    console.log("Submit");
-    console.log(this.surveyForm.value);
-    this.http.post<{message: string}>('http://localhost:4000/surveys/create-mcq', this.surveyForm.getRawValue()).subscribe((response) => {console.log(response.message)});
-    this.router.navigate(['/surveys']);
+    this.isTouched = true;
+    if(this.surveyForm.valid)
+    {
+      if(this.buttonName === "Create")
+      {
+      console.log("Saving to Database...");
+      this.http.post<{message: string}>('http://localhost:4000/surveys/create-mcq', this.surveyForm.getRawValue()).subscribe((response) => {console.log(response.message)});
+      this.router.navigate(['/surveys']);
+      }
+      else
+      {
+        console.log("Updating Database...");
+        this.http.post<{message: string}>('http://localhost:4000/surveys/edit/' + this.editID, this.surveyForm.getRawValue()).subscribe((response) => {console.log(response.message)});
+        this.router.navigate(['/surveys']);
+      }
+    }
     /*this.formTemplete = this.surveyForm.value;
     this.http.post('https://urway-survey.firebaseio.com/surveys.json', this.formTemplete).subscribe(response=>{console.log(response)});*/
   }
@@ -145,6 +183,25 @@ export class CreateComponent implements OnInit {
       }
       (this.questionsDetailcontrols.at(index).get('choices') as FormArray).push(new FormControl('Answer Here', Validators.required));
       (this.questionsDetailcontrols.at(index).get('choices') as FormArray).disable();
+    }
+  }
+  onReset()
+  {
+    this.isTouched = false;
+    this.surveyForm.reset();
+    for(let i = 0; i < this.questionsDetailcontrols.length; i++)
+    {
+      if(i != 0)
+      {
+        this.questionsDetailcontrols.removeAt(i);
+      }
+    }
+  }
+  onCancel()
+  {
+    if(confirm("Are you sure?"))
+    {
+      this.router.navigate(['/surveys']);
     }
   }
 }

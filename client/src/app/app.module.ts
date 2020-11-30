@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,8 +21,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatIconModule } from '@angular/material/icon';
-import { SurveyModel } from '../app/model/survey.model';
 import { CreateComponent } from './pages/create/create.component';
+import { ParticipateComponent } from './pages/participate/participate.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { CreateComponent } from './pages/create/create.component';
     ContactComponent,
     BasePageComponent,
     CreateComponent,
+    ParticipateComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,7 @@ import { CreateComponent } from './pages/create/create.component';
     MatExpansionModule,
     MatDatepickerModule,
     MatIconModule,
-
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

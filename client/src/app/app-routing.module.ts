@@ -5,6 +5,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SurveysComponent } from './pages/surveys/surveys.component';
 import { CreateComponent } from './pages/create/create.component';
+import { ParticipateComponent } from './pages/participate/participate.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {title: 'Home'}},
@@ -13,7 +16,10 @@ const routes: Routes = [
   {path: 'surveys/edit/:id', component: CreateComponent, data: {title: 'Edit'}},
   {path: 'surveys/create', component: CreateComponent, data: {title: 'Create'}},
   {path: 'about', component: AboutComponent, data: {title: 'About Us'}},
-  {path: 'contact', component: ContactComponent, data: {title: 'Contact Us'}}
+  {path: 'contact', component: ContactComponent, data: {title: 'Contact Us'}},
+  {path: 'participate/:id', component: ParticipateComponent, data: {title: 'Participate'}},
+  {path: 'login', component: LoginComponent, data: {title: 'Login'}},
+  {path: 'register', component: RegisterComponent, data: {title: 'Register'}}
 ];
 
 @NgModule({
