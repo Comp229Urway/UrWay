@@ -8,19 +8,25 @@ import { HttpClient } from '@angular/common/http';
 import { SurveyModel } from '../../model/survey.model'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PassDataService } from 'src/app/Services/passData.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
-  providers: [PassDataService]
+  providers: [PassDataService, AuthService]
 })
 export class CreateComponent implements OnInit {
   surveyToEdit: any;
   isTouched = false;
+  username: string = localStorage.getItem("username");
   surveyForm: FormGroup =  new FormGroup({
-    username: new FormControl(null, Validators.required),
+    username: new FormControl(this.username, Validators.required),
     dateCreate: new FormControl(new Date),
+    dateLastModified: new FormControl(new Date),
+    dateActiveStart: new FormControl(new Date),
+    dateActiveEnd: new FormControl(new Date),
+    isActive: new FormControl(false),
     surveyTitle: new FormControl(null, Validators.required),
     surveyDescription: new FormControl(null, Validators.required),
     questionsDetail: new FormArray([new FormGroup({
@@ -32,13 +38,14 @@ export class CreateComponent implements OnInit {
   buttonName: string = 'Create';
   editID: string;
   editSurveyTitle: string;
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
+
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) {
    }
    ngOnInit(): void {
+     this.username = this.authService.getAuthdata().username;
       this.route.params.subscribe(
        (params: Params)=> {
          this.editID = params['id'];
-         console.log("ID: ", this.editID);
        }
      );
      if(this.editID != undefined)

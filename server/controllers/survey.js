@@ -2,17 +2,28 @@ let express = require('express');
 const { data } = require('jquery');
 
 let Survey = require('../models/survey');
+const checkAuth = require('../controllers/check-auth');
 
 module.exports.displaySurveysPage = (req, res, next) => {
-    
-    Survey.find((err, data) => {
+    let username = req.params.username;
+    Survey.find({username: username}, (err, data) => {
         if(err)
         {
             console.error(err);
             res.end();
         }
-        console.log(data);
     res.status(200).json({message: "Fetch All Successful", survey: data});
+    });
+}
+module.exports.displayActiveSurveysPage = (req, res, next) => {
+    Survey.find({isActive: true}, (err, data) => {
+        if(err)
+        {
+            console.error(err);
+            res.end();
+        }
+    res.status(200).json({message: "Fetching All Active Surveys Successful", survey: data
+});
     });
 }
 
@@ -24,7 +35,6 @@ module.exports.displayCreatePage = (req, res, next) => {
 module.exports.processCreatePage = (req, res, next) => {
     res.json({message: "Create Successful"});
     Survey.create(req.body);
-    console.log(req.body);
 }
 
 // Short SURVEY Create and Read 

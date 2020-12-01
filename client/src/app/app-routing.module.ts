@@ -8,13 +8,14 @@ import { CreateComponent } from './pages/create/create.component';
 import { ParticipateComponent } from './pages/participate/participate.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { AuthGuard } from './pages/auth/auth.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {title: 'Home'}},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'surveys', component: SurveysComponent, data: {title: 'Surveys'}},
-  {path: 'surveys/edit/:id', component: CreateComponent, data: {title: 'Edit'}},
-  {path: 'surveys/create', component: CreateComponent, data: {title: 'Create'}},
+  {path: 'surveys', component: SurveysComponent, data: {title: 'Surveys'}, canActivate: [AuthGuard]},
+  {path: 'surveys/edit/:id', component: CreateComponent, data: {title: 'Edit'}, canActivate: [AuthGuard]},
+  {path: 'surveys/create', component: CreateComponent, data: {title: 'Create'}, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, data: {title: 'About Us'}},
   {path: 'contact', component: ContactComponent, data: {title: 'Contact Us'}},
   {path: 'participate/:id', component: ParticipateComponent, data: {title: 'Participate'}},
@@ -24,6 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

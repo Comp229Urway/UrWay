@@ -17,7 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +25,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ParticipateComponent } from './pages/participate/participate.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { AuthInterceptor } from './pages/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { RegisterComponent } from './pages/auth/register/register.component';
     MatIconModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +13,14 @@ loginForm = new FormGroup({
   password: new FormControl(null, Validators.required)
 });
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
   onLogin()
     {
-      if(this.loginForm.valid)
-      {
-        console.log(this.loginForm);
+      if(this.loginForm.valid){
+        this.authService.login(this.loginForm.getRawValue());
       }
     }
 }

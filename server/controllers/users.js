@@ -5,47 +5,59 @@ const jwt = require('jsonwebtoken');
 let User = require('../models/users');
 
 
+
 module.exports.registerUser = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10).then(hashed=>{
-        const user = new User({
-            username: req.body.username,
-            password: hashed,
-            email: req.body.email,
-            dateCreated: req.body.dateCreated,
-            contact: req.body.contact
-        });
-        user.save().then(result => {
-            res.json({message: "Registration Successful"});
-        }).catch(err=> {
-            res.json({
-                err: err
-            })
-        });
-    })
+    User.findOne({username: req.body.username}).then(result=>{
+        if(result)
+        {
+            return res.json({message: "Username Already Exist!"});
+        }
+        bcrypt.hash(req.body.password, 10).then(hashed=>{
+            const user = new User({
+                username: req.body.username,
+                password: hashed,
+                email: req.body.email,
+                dateCreated: req.body.dateCreated,
+                contact: req.body.contact
+            });
+            user.save().then(result => {
+                res.json({message: "Registration Successful"});
+            }).catch(err=> {
+                res.json({
+                    err: err
+                })
+            });
+        })
+    });
+    
     
     
 }
 
 module.exports.loginUser = (req, res, next) => {
-    User.findOne({ uername: req.body.username })
+    let fetchedUser;
+    User.findOne({ username: req.body.username })
     .then(user=> {
         if(!user){
-            return res.json({message: 'Auth Failed'});
+            return res.json({message: '1st Auth Failed'});
         }
-        bcrypt.compare(req.body.password, user.password);
+        fetchedUser = user;
+        return bcrypt.compare(req.body.password, user.password);
     }).then(result => {
+        //console.log(result);
         if(!result){
-            return res.json({message: 'Auth Failed'});
+            return res.json({message: '2nd Auth Failed'});
         }
-        const token = jwt.sign({username: user.username}, 'Secret',
+        const token = jwt.sign({username: fetchedUser.username}, "Secret",
         {expiresIn: "1h"});
         res.json({
             message: "User Found!",
-            token: token
+            token: token,
+            username: fetchedUser.username
         });
     })
     .catch(err => {
-        return res.json({message: 'Auth Failed'});
+        return res.json({message: 'catch Auth Failed'});
     });
 }
 

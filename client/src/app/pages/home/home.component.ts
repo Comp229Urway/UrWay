@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { SurveyModel } from '../../model/survey.model';
 import { BasePageComponent } from '../../partials/base-page/base-page.component';
 
 @Component({
@@ -9,12 +12,20 @@ import { BasePageComponent } from '../../partials/base-page/base-page.component'
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
   title= "Home";
-  constructor(route: ActivatedRoute) {
+  activeSurveys: SurveyModel[] = [];
+  constructor(route: ActivatedRoute, private http: HttpClient) {
     super(route);
   }
 
   ngOnInit(): void {
-
+    this.onGetData();
   }
 
+  onGetData()
+  {console.log("Fetching Active Surveys...");
+    this.http.get<{message:string, survey: SurveyModel[]}>('http://localhost:4000/surveys/active/').subscribe(getData => {
+      this.activeSurveys = getData.survey;
+      console.log(getData.message);
+    });
+  }
 }

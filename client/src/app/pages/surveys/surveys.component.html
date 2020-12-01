@@ -1,6 +1,6 @@
 <div class="container">
-  <a class="btn btn-primary" href="/surveys/create"> Create </a>
-  <div form *ngFor="let survey of surveyCollection">
+  <a class="btn btn-primary" routerLink="/surveys/create"> Create </a>
+  <div form *ngFor="let survey of surveyCollection; let i= index">
     <div class="form-group">
       <mat-accordion>
         <mat-expansion-panel expandedHeight>
@@ -14,6 +14,7 @@
           </mat-expansion-panel-header>
           <p>{{survey.surveyDescription}}</p>
           <mat-action-row>
+            <button mat-raised-button color="Primary" (click)="onActivate(survey, i)">{{buttonName[i]}}</button>
             <button mat-button color="Primary" (click)="onEdit(survey._id)">Edit</button>
             <button mat-button color="warn" (click)="onDeleteSurvey(survey._id)">Delete</button>
           </mat-action-row>
