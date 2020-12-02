@@ -7,6 +7,7 @@ import { BasePageComponent } from 'src/app/partials/base-page/base-page.componen
 import { PassDataService } from 'src/app/Services/passData.service';
 import { SurveyModel } from '../../model/survey.model';
 import { AuthService } from '../auth/auth.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-surveys',
@@ -16,6 +17,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class SurveysComponent extends BasePageComponent implements OnInit {
 
+  isActivated: boolean[] = [];
   buttonName: string[] = [];
   surveyCollection: SurveyModel[] = [];
   username: string;
@@ -31,15 +33,18 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
     this.http.get<{message:string, survey: SurveyModel[]}>('http://localhost:4000/surveys/authenticated/' + this.username).subscribe(getData => {
       this.surveyCollection = getData.survey;
       console.log(getData.message);
+      //console.log(this.toInputDate(this.surveyCollection[0].dateActiveStart.toLocaleString()));
       //console.log(this.surveyCollection)
       for(let i = 0; i < this.surveyCollection.length; i++)
       {
         if(this.surveyCollection[i].isActive)
         {
           this.buttonName.push("Deactivate");
+          this.isActivated.push(true);
         }
         else
         {
+          this.isActivated.push(false);
           this.buttonName.push("Activate");
         }
       }
@@ -65,18 +70,41 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
   {
     this.router.navigate(['/surveys/edit/' +id]);
   }
-  onActivate(survey: SurveyModel, index: number)
+  onActivate(survey: SurveyModel, index: number, dateStart: any, dateEnd: any)
   {
-    let isActived = !survey.isActive;
-    if(isActived)
+    let date = new Date;
+    let dateToday = this.toInputDate(date.toISOString());
+
+    if(dateStart <= dateEnd && dateStart >= dateToday)
     {
-      this.buttonName[index]="Deactivate";
+      let toDateStart = (dateStart + "T00:00:00.001+00:00");
+      let toDateEnd = (dateEnd + "T23:59:59.999+00:00");
+      if(confirm("Are you sure?"))
+      {
+        survey.isActive = !survey.isActive;
+        let isActived = survey.isActive;
+        if(survey.isActive)
+        {
+          this.isActivated[index] = true;
+          this.buttonName[index]="Deactivate";
+        }
+        else
+        {
+          this.isActivated[index] = false;
+          this.buttonName[index]="Activate";
+        }
+      this.http.post<{message: string}>('http://localhost:4000/surveys/edit/' + survey._id, {isActive: isActived, dateActiveStart: toDateStart, dateActiveEnd: toDateEnd}).subscribe((response) => {console.log(response.message)});
+      }
     }
     else
     {
-      this.buttonName[index]="Activate";
+      alert('Start Date Should not be less than today and not greater than End Date.');
     }
-    this.http.post<{message: string}>('http://localhost:4000/surveys/edit/' + survey._id, {isActive: isActived}).subscribe((response) => {console.log(response.message)});
+
+  }
+  toInputDate(date: any)
+  {
+    return(date.toLocaleString().split("T")[0]);
   }
 }
 

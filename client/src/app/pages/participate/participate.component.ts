@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ParticipateModel } from 'src/app/model/participate.model';
 import { QuestionAndAnswerModel } from 'src/app/model/questionAndAnswer.model';
 import { SurveyModel } from 'src/app/model/survey.model';
@@ -21,7 +22,7 @@ export class ParticipateComponent implements OnInit {
   toSend: ParticipateModel = {};
 
   qna: QuestionAndAnswerModel[] = [];
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -64,6 +65,7 @@ export class ParticipateComponent implements OnInit {
       this.toSend.questionAndAnswer = this.qna;
       //console.log(this.toSend);
       this.http.post<{message: string}>('http://localhost:4000/participate/post', this.toSend).subscribe((response) => {console.log(response.message)});
+      this.router.navigate(['/home']);
     }
     else
     {
