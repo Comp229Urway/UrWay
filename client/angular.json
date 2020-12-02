@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "UrWay"
+  "defaultProject": "UrWay",
+  "cli": {
+    "analytics": "39c75bb2-08de-48c0-836a-4b300f7db406"
+  }
 }
