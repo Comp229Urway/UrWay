@@ -17,9 +17,10 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatDatepickerModule } from '@angular/material/datepicker'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateComponent } from './pages/create/create.component';
 import { ParticipateComponent } from './pages/participate/participate.component';
@@ -56,7 +57,8 @@ import { AuthInterceptor } from './pages/auth/auth-interceptor';
     MatExpansionModule,
     MatDatepickerModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],

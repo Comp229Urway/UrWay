@@ -16,7 +16,7 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./create.component.css'],
   providers: [PassDataService, AuthService]
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit {s
   surveyToEdit: any;
   isTouched = false;
   username: string = localStorage.getItem("username");
