@@ -3,3 +3,14 @@
   width: 500px;
   background-color: powderblue;
 }
+
+.full
+{
+  height: 100%;
+}
+
+.vertical-align
+{
+  display: inline-block;
+  vertical-align: middle;
+}
