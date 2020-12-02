@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "bcrypt-nodejs": "0.0.3",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.5.3",
     "firebase": "^8.1.1",
