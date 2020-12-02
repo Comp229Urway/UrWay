@@ -21,6 +21,7 @@ mongoDB.once('open', ()=>{
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let surveyRouter = require('../routes/survey');
+let participateRouter = require('../routes/participate');
 
 let app = express();
 
@@ -45,6 +46,7 @@ next();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/surveys', surveyRouter);
+app.use('/participate', participateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

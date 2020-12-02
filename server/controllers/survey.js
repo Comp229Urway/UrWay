@@ -15,6 +15,19 @@ module.exports.displaySurveysPage = (req, res, next) => {
     res.status(200).json({message: "Fetch All Successful", survey: data});
     });
 }
+
+module.exports.displayParticipateSurveyPage = (req, res, next) => {
+     let id = req.params.id;
+    Survey.findById(id, (err, surveyToEdit) => {
+        if(err)
+        {
+          console.log(err);
+          res.end();
+        } 
+        res.json({message: 'Fetch Survey to Participate Successful', survey: surveyToEdit});
+       });
+}
+
 module.exports.displayActiveSurveysPage = (req, res, next) => {
     Survey.find({isActive: true}, (err, data) => {
         if(err)

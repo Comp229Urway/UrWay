@@ -1,3 +1,4 @@
+const { Template } = require('ejs');
 let express = require('express');
 let router = express.Router();
 
@@ -11,6 +12,9 @@ router.get('/authenticated/:username', checkAuth, surveyController.displaySurvey
 
 /* Get Active Surveys */
 router.get('/active', surveyController.displayActiveSurveysPage);
+
+/* Get Participate Template */
+router.get('/active/:id', surveyController.displayParticipateSurveyPage);
 
 /* GET Create MCQ Surveys page. CREATE*/
 router.get('/create-mcq', surveyController.displayCreatePage);

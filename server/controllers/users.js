@@ -39,14 +39,14 @@ module.exports.loginUser = (req, res, next) => {
     User.findOne({ username: req.body.username })
     .then(user=> {
         if(!user){
-            return res.json({message: '1st Auth Failed'});
+            return res.json({message: 'User Not Found'});
         }
         fetchedUser = user;
         return bcrypt.compare(req.body.password, user.password);
     }).then(result => {
         //console.log(result);
         if(!result){
-            return res.json({message: '2nd Auth Failed'});
+            return res.json({message: 'Invalid Username and Password'});
         }
         const token = jwt.sign({username: fetchedUser.username}, "Secret",
         {expiresIn: "1h"});

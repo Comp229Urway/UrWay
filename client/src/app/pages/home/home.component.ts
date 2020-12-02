@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { SurveyModel } from '../../model/survey.model';
 import { BasePageComponent } from '../../partials/base-page/base-page.component';
@@ -13,7 +13,7 @@ import { BasePageComponent } from '../../partials/base-page/base-page.component'
 export class HomeComponent extends BasePageComponent implements OnInit {
   title= "Home";
   activeSurveys: SurveyModel[] = [];
-  constructor(route: ActivatedRoute, private http: HttpClient) {
+  constructor(route: ActivatedRoute, private http: HttpClient, private router: Router) {
     super(route);
   }
 
@@ -27,5 +27,9 @@ export class HomeComponent extends BasePageComponent implements OnInit {
       this.activeSurveys = getData.survey;
       console.log(getData.message);
     });
+  }
+  onParticipate(id: string)
+  {
+    this.router.navigate(['/participate/' + id]);
   }
 }
