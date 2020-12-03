@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm = new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
@@ -15,11 +16,24 @@ export class RegisterComponent implements OnInit {
     dateCreated: new FormControl(new Date),
     contact: new FormControl(null, Validators.required)
   });
+  registerErrorSubs: Subscription;
+  registerMessageSubs: Subscription;
+  /* isError = false;
+  theMessage = ""; */
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
+    /* this.registerErrorSubs = this.authService.getRegisterErrorListener().subscribe(error => {
+      this.isError = error;
+    });
+    this.registerMessageSubs = this.authService.getRegisterMessageListener().subscribe(message => {
+      this.theMessage = message;
+    }); */
   }
-
+  ngOnDestroy(): void {
+    /* this.registerErrorSubs.unsubscribe();
+    this.registerMessageSubs.unsubscribe(); */
+  }
   onRegister()
   {
     if(this.registerForm.invalid)

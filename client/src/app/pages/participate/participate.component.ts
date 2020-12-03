@@ -26,7 +26,7 @@ export class ParticipateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(
-      (params: Params)=> {
+      (params: Params) => {
         this.participateID = params['id'];
       });
       this.getSurvey();

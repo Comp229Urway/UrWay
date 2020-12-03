@@ -1,6 +1,9 @@
 <div class="container">
 
   <mat-card>
+    <!-- <div class="col-7 text-center  error" *ngIf="isError">
+      <h3 class="m-auto">{{theMessage}}</h3>
+    </div> -->
     <form [formGroup]="registerForm" (submit)="onRegister()" >
       <div class="row justify-content-center">
         <div class="col-7">

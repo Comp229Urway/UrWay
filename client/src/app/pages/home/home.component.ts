@@ -36,6 +36,13 @@ export class HomeComponent extends BasePageComponent implements OnInit {
         {
           this.activeSurveys.push(temporaryStorage[i]);
         }
+        else
+        {
+          this.http.post<{message: string}>('http://localhost:4000/surveys/active/update/' + temporaryStorage[i]._id, {isActive: false}).subscribe((response) => {console.log(response.message)});
+         /*  this.http.post<{message: string}>('http://localhost:4000/surveys/active/update', temporaryStorage[i]._id).subscribe(data => {
+            console.log(data.message);
+          }); */
+        }
       }
     });
   }

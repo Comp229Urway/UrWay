@@ -3,6 +3,9 @@
     <mat-card>
       <form [formGroup]="loginForm" (submit)="onLogin()" >
         <div class="row justify-content-center">
+          <div class="col-7 text-center  error" *ngIf="showError">
+            <h3 class="m-auto">Incorrect Login Credentials!</h3>
+          </div>
           <div class="col-7">
             <mat-form-field class="w-100">
               <input type="text" matInput placeholder="Username" formControlName="username" required>

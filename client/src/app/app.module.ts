@@ -27,6 +27,8 @@ import { ParticipateComponent } from './pages/participate/participate.component'
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthInterceptor } from './pages/auth/auth-interceptor';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { DialogBoxComponent } from './partials/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { AuthInterceptor } from './pages/auth/auth-interceptor';
     ParticipateComponent,
     LoginComponent,
     RegisterComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +61,11 @@ import { AuthInterceptor } from './pages/auth/auth-interceptor';
     MatDatepickerModule,
     MatIconModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-  ],
-  bootstrap: [AppComponent]
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {position: {top: '10%'}, hasBackdrop: true}}],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogBoxComponent]
 })
 export class AppModule { }

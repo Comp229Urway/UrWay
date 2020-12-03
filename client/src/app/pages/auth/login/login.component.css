@@ -2,3 +2,9 @@
 {
   width: 100%;
 }
+.error
+{
+  border-radius: 4px;
+  padding: 4px;
+  color: red;
+}
