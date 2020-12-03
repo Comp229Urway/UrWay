@@ -9,6 +9,8 @@ import { SurveyModel } from '../../model/survey.model'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PassDataService } from 'src/app/Services/passData.service';
 import { AuthService } from '../auth/auth.service';
+import { DialogBoxComponent } from 'src/app/partials/dialog-box/dialog-box.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create',
@@ -40,7 +42,7 @@ export class CreateComponent implements OnInit {s
   editSurveyTitle: string;
   usernameSuccess: boolean = false;
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService, private dialog: MatDialog) {
    }
    ngOnInit(): void {
      this.username = this.authService.getAuthdata().username;
@@ -61,6 +63,7 @@ export class CreateComponent implements OnInit {s
       this.http.get<{message:string, survey: SurveyModel, success: boolean}>('http://localhost:4000/surveys/edit/' + this.editID).subscribe(getData => {
       if(!getData.success)
       {
+        this.dialog.open(DialogBoxComponent, {data: {title: "Error",message: getData.message}});
         this.router.navigate(["/surveys"]);
       }
       else
