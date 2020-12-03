@@ -38,6 +38,7 @@ export class CreateComponent implements OnInit {s
   buttonName: string = 'Create';
   editID: string;
   editSurveyTitle: string;
+  usernameSuccess: boolean = false;
 
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) {
    }
@@ -57,11 +58,16 @@ export class CreateComponent implements OnInit {s
       getEditData()
     {
       console.log("Fetching Data to Edit...");
-      this.http.get<{message:string, survey: SurveyModel}>('http://localhost:4000/surveys/edit/' + this.editID).subscribe(getData => {
-      this.surveyToEdit = getData.survey;
-      console.log(getData.message);
-        this.buttonName = "Edit";
-        this.surveyForm
+      this.http.get<{message:string, survey: SurveyModel, success: boolean}>('http://localhost:4000/surveys/edit/' + this.editID).subscribe(getData => {
+      if(!getData.success)
+      {
+        this.router.navigate(["/surveys"]);
+      }
+      else
+      {
+            console.log(getData.message);
+            this.surveyToEdit = getData.survey;
+            this.buttonName = "Edit";
             this.surveyForm =  new FormGroup({
               surveyTitle: new FormControl(this.surveyToEdit.surveyTitle),
               surveyDescription: new FormControl(this.surveyToEdit.surveyDescription),
@@ -92,8 +98,10 @@ export class CreateComponent implements OnInit {s
             }
 
             this.questionsDetailcontrols.removeAt(0);
+      }
       });
-    }
+
+  }
 
   onSubmit()
   {

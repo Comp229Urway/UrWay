@@ -3,7 +3,7 @@
   <div form *ngFor="let survey of surveyCollection; let i= index">
     <div class="form-group">
       <mat-accordion>
-        <mat-expansion-panel expandedHeight>
+        <mat-expansion-panel expandedHeight [expanded]="i == 0">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <h1>{{survey.surveyTitle}}</h1>

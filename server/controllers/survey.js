@@ -35,8 +35,7 @@ module.exports.displayActiveSurveysPage = (req, res, next) => {
             console.error(err);
             res.end();
         }
-    res.status(200).json({message: "Fetching All Active Surveys Successful", survey: data
-});
+    res.status(200).json({message: "Fetching All Active Surveys Successful", survey: data});
     });
 }
 
@@ -105,13 +104,18 @@ module.exports.processCreateTruePage = (req, res, next) => {
 // Read and Update for Edit Page
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
+    let username = req.headers.authorization.split(" ")[2];
+    console.log(username);
     Survey.findById(id, (err, surveyToEdit) => {
         if(err)
         {
-          console.log(err);
-          res.end();
+            return res.json({message: 'Not Found', sucess: false});
         }
-        res.json({message: 'Fetch to Edit Successful', survey: surveyToEdit});
+        if(username !== surveyToEdit.username)
+        {
+            return res.json({message: 'Unauthorized User!', sucess: false});
+        }
+        res.json({message: 'Fetch to Edit Successful', survey: surveyToEdit, success: true});
       }); 
 }
 
