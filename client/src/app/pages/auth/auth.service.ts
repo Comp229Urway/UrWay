@@ -13,13 +13,18 @@ export class AuthService {
 
 
   createUser(registerForm: any){
-    this.http.post('http://localhost:4000/users/register', registerForm).subscribe((response) => {
+    this.http.post<{message: string}>('http://localhost:4000/users/register', registerForm).subscribe((response) => {
       console.log(response);
+      if(response.message !== "Username Already Exist!")
+      {
+        this.router.navigate(['/login']);
+      }
     });
   }
   login(loginForm: any){
     this.http.post<{message: string, token: string, username: string}>('http://localhost:4000/users/login', loginForm).subscribe(response => {
       this.token = response.token;
+      console.log(response.message);
       this.isAuthenticated = true;
       if(response.token)
       {

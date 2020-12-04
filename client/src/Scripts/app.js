@@ -1,9 +1,9 @@
 //IIFE - Immediately Invoked Function Expression
-(()=> {
-    function Start()
-    {
+(() => {
+    function Start() {
         console.log('App Started...');
     }
     window.addEventListener('load', Start);
-}
-)();
+})();
+
+new WOW().init();

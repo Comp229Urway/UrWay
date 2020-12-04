@@ -27,21 +27,21 @@
 }
 
 .containerHome div {
-        padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
-.jumbotron{
-color: #2c2c2c;
-background-color: rgba(224, 222, 222, 0.205) !important;
+.jumbotron {
+    color: #2c2c2c;
+    background-color: rgba(224, 222, 222, 0.205) !important;
 }
 
-.buffer{
+.buffer {
     height: 100px;
 }
 
 #surveyTitle {
-    font-size:30px;
-    font-weight: 500;    
+    font-size: 30px;
+    font-weight: 500;
 }
 
 #questions {
@@ -52,13 +52,13 @@ background-color: rgba(224, 222, 222, 0.205) !important;
 input[type='radio'] {
     width: 15px;
     height: 15px;
-    border-radius: 15px;    
+    border-radius: 15px;
 }
 
 input[type='radio']:checked {
     width: 17px;
     height: 17px;
-    border-radius: 17px;    
+    border-radius: 17px;
 }
 
 .ourCarousel {
@@ -68,7 +68,7 @@ input[type='radio']:checked {
 }
 
 .ourCarousel img {
-    width:auto;
+    width: auto;
     max-height: 640px;
 }
 
@@ -77,8 +77,17 @@ h5 {
     font-weight: 400;
     color: #15ff00;
 }
+
 p {
     font-size: 15px;
     font-weight: 400;
-    color:#15ff00;
+    color: #15ff00;
+}
+
+body {
+    background-color: beige;
+}
+
+.form-group {
+    font-family: 'Patua One', cursive;
 }

@@ -1,25 +1,26 @@
 <div class="container">
-  <a class="btn btn-primary" routerLink="/surveys/create"> Create </a>
-  <div form *ngFor="let survey of surveyCollection; let i= index">
-    <div class="form-group">
-      <mat-accordion>
-        <mat-expansion-panel expandedHeight>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <h1>{{survey.surveyTitle}}</h1>
-            </mat-panel-title>
-            <mat-panel-description>
+    <br>
+    <a class="btn btn-lg btn-outline-dark" routerLink="/surveys/create"> Create </a><br><br>
+    <div form *ngFor="let survey of surveyCollection; let i= index">
+        <div class="form-group" style="font-family: 'Patua One', cursive;">
+            <mat-accordion>
+                <mat-expansion-panel expandedHeight>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h1>{{survey.surveyTitle}}</h1>
+                        </mat-panel-title>
+                        <mat-panel-description>
 
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>{{survey.surveyDescription}}</p>
-          <mat-action-row>
-            <button mat-raised-button color="Primary" (click)="onActivate(survey, i)">{{buttonName[i]}}</button>
-            <button mat-button color="Primary" (click)="onEdit(survey._id)">Edit</button>
-            <button mat-button color="warn" (click)="onDeleteSurvey(survey._id)">Delete</button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </mat-accordion>
-  </div>
-  </div>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{survey.surveyDescription}}</p>
+                    <mat-action-row>
+                        <button mat-raised-button color="Primary" (click)="onActivate(survey, i)">{{buttonName[i]}}</button>
+                        <button mat-button color="Primary" (click)="onEdit(survey._id)">Edit</button>
+                        <button mat-button color="warn" (click)="onDeleteSurvey(survey._id)">Delete</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
 </div>

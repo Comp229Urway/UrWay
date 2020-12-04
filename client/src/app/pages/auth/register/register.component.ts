@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin()
+  onRegister()
   {
     if(this.registerForm.invalid)
     {

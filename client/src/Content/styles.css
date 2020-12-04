@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 /* custom css goes here */
 
 .navbar-brand a {
@@ -28,20 +30,20 @@
 }
 
 .containerHome div {
-        padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
-.jumbotron{
-color: #2c2c2c;
-background-color: rgba(224, 222, 222, 0.205) !important;
+.jumbotron {
+    color: #2c2c2c;
+    background-color: rgba(224, 222, 222, 0.205) !important;
 }
 
-.buffer{
+.buffer {
     height: 100px;
 }
 
 #surveyTitle {
-    font-size:30px;
+    font-size: 30px;
     font-weight: 500;
 }
 
@@ -69,7 +71,7 @@ input[type='radio']:checked {
 }
 
 .ourCarousel img {
-    width:auto;
+    width: auto;
     max-height: 640px;
 }
 
@@ -78,15 +80,78 @@ h5 {
     font-weight: 400;
     color: #15ff00;
 }
+
+
 /*p {
     font-size: 15px;
     font-weight: 400;
     color:#15ff00;
 }*/
-.bg-jbtrcolor
-{
+
+.bg-jbtrcolor {
     background-color: rgba(224, 222, 222, 0.205);
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: #E7DECD;
+    background-color: #e7decd;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.nav-item {
+    font-family: 'Averia Libre', cursive;
+}
+
+.surveyTitle {
+    font-family: 'Averia Libre', cursive;
+}
+
+.Middle {
+    font-family: 'Patua One', cursive;
+}
+
+.carousel-item {
+    font-family: 'Patua One', cursive;
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #1C2331!important;
+    }
+}
+
+.view,
+body,
+html {
+    height: 100%
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.page-footer,
+.top-nav-collapse {
+    background-color: #1C2331
+}
+
+@media only screen and (max-width:768px) {
+    .navbar {
+        background-color: #1C2331
+    }
+}
+
+.form-group {
+    font-family: 'Patua One', cursive;
+}
