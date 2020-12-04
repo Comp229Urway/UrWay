@@ -15,8 +15,8 @@ import { DialogBoxComponent } from 'src/app/partials/dialog-box/dialog-box.compo
 export class ViewComponent implements OnInit {
 
   idToFind: string;
-  templateSurvey: SurveyModel;
-  participants: ParticipateModel[];
+  templateSurvey: SurveyModel = {};
+  participants: ParticipateModel[] = [];
   constructor(private route: ActivatedRoute, private http: HttpClient, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
@@ -52,5 +52,13 @@ export class ViewComponent implements OnInit {
     console.log(response.message);
     console.log(response.participants);
   });
+  }
+  getActiveDate()
+  {
+    return this.toInputDate(this.templateSurvey.dateActiveStart)+" to "+ this.toInputDate(this.templateSurvey.dateActiveEnd)
+  }
+  toInputDate(date: any)
+  {
+    return(date.toLocaleString().split("T")[0]);
   }
 }

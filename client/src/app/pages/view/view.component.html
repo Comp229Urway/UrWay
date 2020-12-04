@@ -1,1 +1,52 @@
-<p>view works!</p>
+<div class="container">
+  <div class="row justify-content-between">
+    <h3>Participants: {{participants.length}}</h3>
+    <button mat-raised-button color="primary">Export</button>
+  </div>
+  <div class="row justify-content-start">
+    <h3>Survey Date: {{ getActiveDate() }}</h3>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-7"><h1 class="text-center">{{ templateSurvey.surveyTitle }}</h1></div>
+    <div class="col-6"><p class="text-center">{{ templateSurvey.surveyDescription }}</p></div>
+  </div>
+  <!-- <div class="row justify-content-start">
+   <h2>Statistics:</h2>
+  </div>
+  <div class="row justify-content-start">
+    <div *ngFor="let questionDetails of templateSurvey.questionsDetail">
+      <p>Q: {{ questionDetails.question }}</p>
+      <div *ngFor="let choice of questionDetails.choices">
+        <p>{{ choice }}</p>
+      </div>
+      <br>
+    </div>
+  </div> -->
+  <div class="row justify-content-center">
+    <h2>List of All Participants</h2>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-7">
+    <mat-accordion>
+      <div *ngFor="let participant of participants; let i=index">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Participant #{{ i+1 }}</h3>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{participant._id}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Date Create: {{ participant.dateCreated }}</p>
+          <div *ngFor="let questionsAndAnswers of participant.questionAndAnswer; let in=index">
+            <p class="display-5 m-0">Q{{in + 1}}: {{ questionsAndAnswers.question }}</p>
+            <p class="display-5 m-0">Answer: {{ questionsAndAnswers.answer }}</p>
+            <hr>
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </mat-accordion>
+    </div>
+  </div>
+</div>
