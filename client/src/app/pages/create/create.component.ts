@@ -49,8 +49,7 @@ export class CreateComponent implements OnInit {s
       this.route.params.subscribe(
        (params: Params)=> {
          this.editID = params['id'];
-       }
-     );
+       });
      if(this.editID != undefined)
      {
      this.getEditData();
@@ -63,7 +62,7 @@ export class CreateComponent implements OnInit {s
       this.http.get<{message:string, survey: SurveyModel, success: boolean}>('http://localhost:4000/surveys/edit/' + this.editID).subscribe(getData => {
       if(!getData.success)
       {
-        this.dialog.open(DialogBoxComponent, {data: {title: "Error",message: getData.message}});
+        this.dialog.open(DialogBoxComponent, {data: {title: "Error",message: getData.message, isNotify: true}});
         this.router.navigate(["/surveys"]);
       }
       else

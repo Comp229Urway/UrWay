@@ -1,6 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-dialog-box',
@@ -9,7 +10,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogBoxComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, message: string}) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, message: string, isNotify: boolean}) {
+  }
 
   ngOnInit(): void {
   }

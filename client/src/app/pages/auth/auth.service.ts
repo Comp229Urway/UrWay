@@ -32,7 +32,7 @@ export class AuthService {
       }
       else if(!response.success)
       {
-        this.dialog.open(DialogBoxComponent, {data: {title: null,message: response.message}});
+        console.log(this.dialog.open(DialogBoxComponent, {data: {title: null,message: response.message}}));
         console.log(response.message);
         /* this.registerErrorListener.next(false);
         this.registerMessageListener.next(response.message); */

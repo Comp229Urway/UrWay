@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
-        <div class="row justify-content-end form-group">
+        <div class="row justify-content-end form-group mb-10">
           <button type="submit" mat-raised-button color="primary">{{buttonName}}</button>
           <button type="button" mat-button color="primary" (click)="onReset()">Reset</button>
           <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>

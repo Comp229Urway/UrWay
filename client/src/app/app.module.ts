@@ -29,6 +29,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthInterceptor } from './pages/auth/auth-interceptor';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { DialogBoxComponent } from './partials/dialog-box/dialog-box.component';
+import { ViewComponent } from './pages/view/view.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DialogBoxComponent } from './partials/dialog-box/dialog-box.component';
     ParticipateComponent,
     LoginComponent,
     RegisterComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +64,11 @@ import { DialogBoxComponent } from './partials/dialog-box/dialog-box.component';
     MatIconModule,
     MatCardModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {position: {top: '10%'}, hasBackdrop: true}}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {position: {top: '10%'},
+  hasBackdrop: true, minHeight: "10rem", minWidth: "20rem"}}],
   bootstrap: [AppComponent],
   entryComponents: [DialogBoxComponent]
 })

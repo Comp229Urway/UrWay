@@ -8,6 +8,8 @@ import { PassDataService } from 'src/app/Services/passData.service';
 import { SurveyModel } from '../../model/survey.model';
 import { AuthService } from '../auth/auth.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from 'src/app/partials/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-surveys',
@@ -22,7 +24,8 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
   surveyCollection: SurveyModel[] = [];
   username: string;
   private updatedCollection = new Subject<SurveyModel[]>();
-  constructor(route: ActivatedRoute, private http: HttpClient, private router: Router, private passData: PassDataService, private authService: AuthService) {
+  constructor(route: ActivatedRoute, private http: HttpClient, private router: Router, private passData: PassDataService, private authService: AuthService,
+    private dialog: MatDialog) {
     super(route); }
   ngOnInit(): void {
     this.username = localStorage.getItem("username");
@@ -52,19 +55,22 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
   }
   onDeleteSurvey(id: string)
   {
-    if(confirm("Are you sure?"))
-    {
-    console.log("Deleting Survey...");
+    let dialogRef = this.dialog.open(DialogBoxComponent, {data:{title: "Confirmation", message: "Are you Sure to Delete?", isNotify: false}});
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+      {
+        console.log("Deleting Survey...");
 
     this.http.get<{message: string}>('http://localhost:4000/surveys/delete/' + id).subscribe((Response) => {
-      const updatedSurvey = this.surveyCollection.filter(survey => survey._id !== id);
-      this.surveyCollection = updatedSurvey;
+        const updatedSurvey = this.surveyCollection.filter(survey => survey._id !== id);
+        this.surveyCollection = updatedSurvey;
 
-        this.updatedCollection.next([...updatedSurvey]);
+          this.updatedCollection.next([...updatedSurvey]);
 
-      console.log(Response.message);
-     });
-    }
+        console.log(Response.message);
+        });
+      }
+    });
   }
   onEdit(id: string)
   {
@@ -79,32 +85,39 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
     {
       let toDateStart = (dateStart + "T00:00:00.001+00:00");
       let toDateEnd = (dateEnd + "T23:59:59.999+00:00");
-      if(confirm("Are you sure?"))
-      {
-        survey.isActive = !survey.isActive;
-        let isActived = survey.isActive;
-        if(survey.isActive)
+      let dialogRef = this.dialog.open(DialogBoxComponent, {data:{title: "Confirmation", message: "Are You Sure to "+this.buttonName[index]+"?", isNotify: false}});
+      dialogRef.afterClosed().subscribe(response => {
+        if(response)
         {
-          this.isActivated[index] = true;
-          this.buttonName[index]="Deactivate";
+          survey.isActive = !survey.isActive;
+          let isActived = survey.isActive;
+          if(survey.isActive)
+          {
+            this.isActivated[index] = true;
+            this.buttonName[index]="Deactivate";
+          }
+          else
+          {
+            this.isActivated[index] = false;
+            this.buttonName[index]="Activate";
+          }
+          this.http.post<{message: string}>('http://localhost:4000/surveys/edit/' + survey._id, {isActive: isActived, dateActiveStart: toDateStart, dateActiveEnd: toDateEnd}).subscribe((response) => {console.log(response.message)});
         }
-        else
-        {
-          this.isActivated[index] = false;
-          this.buttonName[index]="Activate";
-        }
-      this.http.post<{message: string}>('http://localhost:4000/surveys/edit/' + survey._id, {isActive: isActived, dateActiveStart: toDateStart, dateActiveEnd: toDateEnd}).subscribe((response) => {console.log(response.message)});
-      }
+      });
     }
     else
     {
-      alert('Start Date Should not be less than today and not greater than End Date.');
+      let dialogRef = this.dialog.open(DialogBoxComponent, {data:{title: "Alert", message: "Invalid Dates!. Start Date Should not be less than today and not greater than End Date.", isNotify: true}});
     }
 
   }
   toInputDate(date: any)
   {
     return(date.toLocaleString().split("T")[0]);
+  }
+  onView(id: string)
+  {
+    this.router.navigate(['/surveys/view/' + id]);
   }
 }
 
