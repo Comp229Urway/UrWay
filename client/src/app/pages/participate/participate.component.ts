@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ParticipateModel } from 'src/app/model/participate.model';
 import { QuestionAndAnswerModel } from 'src/app/model/questionAndAnswer.model';
 import { SurveyModel } from 'src/app/model/survey.model';
+import { DialogBoxComponent } from 'src/app/partials/dialog-box/dialog-box.component';
 import { SurveysComponent } from '../surveys/surveys.component';
 
 @Component({
@@ -15,18 +17,17 @@ import { SurveysComponent } from '../surveys/surveys.component';
 })
 export class ParticipateComponent implements OnInit {
 
-  showHint: boolean = false;
   participateID: string = null;
   participateSurvey: SurveyModel = {};
   answer: string[] = [];
   toSend: ParticipateModel = {};
 
   qna: QuestionAndAnswerModel[] = [];
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
-      (params: Params)=> {
+      (params: Params) => {
         this.participateID = params['id'];
       });
       this.getSurvey();
@@ -41,16 +42,15 @@ export class ParticipateComponent implements OnInit {
 
   onSubmit()
   {
-    let isempty = true;
+    let isempty = false;
     for(let i = 0; i<this.answer.length; i++)
     {
       if(this.answer[i] == null)
       {
         isempty = true;
-        this.showHint = true;
+        //this.dialog.open(DialogBoxComponent, {data:{title: 'Incomplete', message: 'Please Answer all Questions.', isNotify: true}});
         break;
       }
-      isempty = false;
     }if(this.participateSurvey.questionsDetail.length == this.answer.length && !isempty)
     {
       this.toSend.username = this.participateSurvey.username;
@@ -69,7 +69,7 @@ export class ParticipateComponent implements OnInit {
     }
     else
     {
-      this.showHint = true;
+      this.dialog.open(DialogBoxComponent, {data:{title: 'Incomplete', message: 'Please Answer all Questions.', isNotify: true}});
     }
   }
 }
