@@ -1,6 +1,6 @@
 let express = require('express');
 const { data } = require('jquery');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 let User = require('../models/users');
 
