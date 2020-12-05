@@ -61,7 +61,7 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
       {
         console.log("Deleting Survey...");
 
-    this.http.get<{message: string}>('http://localhost:4000/surveys/delete/' + id).subscribe((Response) => {
+        this.http.get<{message: string}>('http://localhost:4000/surveys/delete/' + id).subscribe((Response) => {
         const updatedSurvey = this.surveyCollection.filter(survey => survey._id !== id);
         this.surveyCollection = updatedSurvey;
 

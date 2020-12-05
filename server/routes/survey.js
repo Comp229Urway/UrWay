@@ -4,7 +4,6 @@ let router = express.Router();
 
 const checkAuth = require('../controllers/check-auth');
 
-
 let surveyController = require('../controllers/survey');
 
 /* GET Surveys page. READ*/
@@ -12,6 +11,9 @@ router.get('/authenticated/:username', checkAuth, surveyController.displaySurvey
 
 /* Get Active Surveys */
 router.get('/active', surveyController.displayActiveSurveysPage);
+
+/* Update Survey */
+router.post('/active/update/:id', surveyController.updateInvalidSurveys);
 
 /* Get Participate Template */
 router.get('/active/:id', surveyController.displayParticipateSurveyPage);
@@ -34,7 +36,6 @@ router.get('/create-tof', surveyController.displayCreateTruePage);
 /* POST process True or False Surveys Create page. CREATE*/
 router.post('/create-tof', surveyController.processCreateTruePage);
 
-
 /* GET Edit page. UPDATE*/
 router.get('/edit/:id', checkAuth, surveyController.displayEditPage);
 
@@ -49,5 +50,8 @@ router.get('/participate/:id', surveyController.displayParticipatePage);
 
 /* Post process Participate page. READ*/
 router.post('/participate/:id', surveyController.processParticapatePage);
+
+/* Get Participants */
+router.post('/participate/view/:id', surveyController.getSurveyTemplete);
 
 module.exports = router;

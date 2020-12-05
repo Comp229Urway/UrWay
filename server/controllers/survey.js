@@ -16,6 +16,18 @@ module.exports.displaySurveysPage = (req, res, next) => {
     });
 }
 
+module.exports.updateInvalidSurveys = (req, res, next) => {
+    let id = req.params.id;
+    Survey.updateOne(
+      {_id:id}, req.body,
+      (err) =>
+      {
+        console.log(err);
+        res.end();
+      }); 
+      res.json({message: "Update Successful!"});
+}
+
 module.exports.displayParticipateSurveyPage = (req, res, next) => {
      let id = req.params.id;
     Survey.findById(id, (err, surveyToEdit) => {
@@ -136,7 +148,7 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.displayParticipatePage = (req, res, next) => {
     let id = req.params.id;
     Survey.findById(id, (err, surveyToEdit) => {
-        console.log(surveyToEdit.answers);
+        //console.log(surveyToEdit.answers);
         if(err)
         {
           console.log(err);
@@ -174,4 +186,8 @@ module.exports.processDeletePage = (req, res, next) => {
         }
         res.json({message: "Survey Deleted..."})
     });
+}
+
+module.exports.getSurveyTemplete = (req, res, next) => {
+    res.json({message: "Fetch Survey Template Success..."});
 }
