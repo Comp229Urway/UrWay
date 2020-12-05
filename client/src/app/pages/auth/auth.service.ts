@@ -53,7 +53,7 @@ export class AuthService {
       }
       else if(!response.success)
       {
-        this.dialog.open(DialogBoxComponent, {data: {title: null,message: response.message}});
+        this.dialog.open(DialogBoxComponent, {data: {title: null, message: response.message, isNotify: true}});
       }
     });
   }

@@ -19,7 +19,19 @@
       <div *ngFor="let questionDetails of templateSurvey.questionsDetail; let a=index;">
         <p>Q: {{ questionDetails.question }}</p>
         <div *ngIf="questionDetails.questionType === 'saq'">
-          <p *ngFor="let answers of saqTemp[a]" class="no-extra">{{ answers }}</p>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Answers</h4>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p *ngFor="let answers of saqTemp[a]" class="no-extra">{{ answers }}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+         <!--  <p *ngFor="let answers of saqTemp[a]" class="no-extra">{{ answers }}</p> -->
         </div>
         <div *ngIf="questionDetails.questionType !== 'saq'">
           <div *ngFor="let choice of questionDetails.choices; let b=index">
