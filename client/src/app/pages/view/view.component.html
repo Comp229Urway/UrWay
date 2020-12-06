@@ -1,0 +1,75 @@
+<div class="container">
+  <div *ngIf="showData">
+  <div class="row justify-content-between">
+    <h3>Participants: {{participants.length}}</h3>
+    <button mat-raised-button color="primary" (click)="generatePDF()">Download PDF</button>
+  </div>
+  <div class="row justify-content-start">
+    <h3>Survey Date: {{ getActiveDate() }}</h3>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-7"><h1 class="text-center">{{ templateSurvey.surveyTitle }}</h1></div>
+    <div class="col-6"><p class="text-center">{{ templateSurvey.surveyDescription }}</p></div>
+  </div>
+  <div class="row justify-content-start">
+   <h2>Statistics:</h2>
+  </div>
+  <div class="row justify-content-start">
+    <div class="col-12">
+      <div *ngFor="let questionDetails of templateSurvey.questionsDetail; let a=index;">
+        <p>Q: {{ questionDetails.question }}</p>
+        <div *ngIf="questionDetails.questionType === 'saq'">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Answers</h4>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p *ngFor="let answers of saqTemp[a]" class="no-extra">{{ answers }}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+         <!--  <p *ngFor="let answers of saqTemp[a]" class="no-extra">{{ answers }}</p> -->
+        </div>
+        <div *ngIf="questionDetails.questionType !== 'saq'">
+          <div *ngFor="let choice of questionDetails.choices; let b=index">
+          <p class="no-extra">{{ choice }}: {{ count[a][b] }}  ({{toPercentage(count[a][b])}}%)</p>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <h3>List of All Participants:</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-7">
+    <mat-accordion>
+      <div *ngFor="let participant of participants; let i=index">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Participant #{{ i+1 }}</h4>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{participant._id}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Date Create: {{ participant.dateCreated }}</p>
+          <div *ngFor="let questionsAndAnswers of participant.questionAndAnswer; let in=index">
+            <p class="display-5 m-0">Q{{in + 1}}: {{ questionsAndAnswers.question }}</p>
+            <p class="display-5 m-0">Answer: {{ questionsAndAnswers.answer }}</p>
+            <hr class="no-extra">
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </mat-accordion>
+    </div>
+  </div>
+  </div>
+</div>

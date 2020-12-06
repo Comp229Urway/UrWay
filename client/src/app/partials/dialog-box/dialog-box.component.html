@@ -1,0 +1,7 @@
+<h3 mat-dialog-title >{{data.title}}</h3>
+<mat-dialog-content><h3>{{ data.message }}</h3></mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="data.isNotify">Ok</button>
+  <button mat-stroked-button [mat-dialog-close]="false" *ngIf="!data.isNotify">No</button>
+  <button mat-stroked-button [mat-dialog-close]="true" *ngIf="!data.isNotify" color="warn">Yes</button>
+</mat-dialog-actions>
