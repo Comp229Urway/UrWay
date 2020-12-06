@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/pages/auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  username: string = localStorage.getItem("username");
+
   private authListenerSubs: Subscription;
    isAuthenticated = false;
   constructor(private authService: AuthService, private router: Router) { }
