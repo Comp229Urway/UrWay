@@ -17,3 +17,25 @@
 .nav-link:hover{
   color: rgb(32, 200, 102) !important;
 }
+
+@media only screen and (max-width: 1080px) {
+  #zoom {
+    transition: transform .2s;
+  }
+
+  #zoom:hover {
+    transform: scale(1.025);
+  }
+
+  #zoom1 {
+    transition: transform .2s;
+  }
+
+  #zoom1:hover {
+    transform: scale(1);
+  }
+
+  .nav-link:hover {
+    color: rgb(32, 200, 102) !important;
+  }
+}
