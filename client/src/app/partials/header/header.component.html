@@ -28,7 +28,7 @@
               <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="fas fa-sign-in-alt"></i> Log In </a>
           </li>
             <div><li class="nav-item">
-              <button class="nav-link btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="fas fa-sign-in-alt"></i> Log Out</button>
+              <button class="btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="fas fa-sign-in-alt"></i> Log Out</button>
           </li></div>
 
           <li class="nav-item">

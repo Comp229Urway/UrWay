@@ -10,3 +10,14 @@
 {
   margin: auto;
 }
+
+#zoom {
+  transition: transform .2s;
+  width: 13px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+#zoom:hover {
+  transform: scale(2);
+}
