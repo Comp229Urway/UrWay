@@ -1,12 +1,56 @@
-.w-80
-{
-  overflow: scroll;
+.container {
   margin: auto;
-  width: 100%;
-  height: 200px;
-  background-color: gainsboro;
+  max-height: 560px;
 }
-.mar-auto
-{
+
+.jumbotron {
+  background-color: rgba(148, 101, 101, 0) !important;
   margin: auto;
+  padding-left: 200px;
+  padding-right: auto;
+  z-index: 5;
+}
+
+#zoom {
+  transition: transform .12s;
+}
+
+#zoom:hover {
+  transform: scale(1.5);
+}
+
+/* Click animations styles */
+
+.focus-area input {
+  outline: none;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+.focus-area textarea {
+  outline: none;
+  border: 2px solid black;
+  resize: none;
+  transition: 0.3s;
+}
+
+.focus-area input:focus,
+.focus-area textarea:focus {
+  border-color: #30cc8b;
+}
+
+.focus-area button {
+  display: block;
+  background: #30cc8b;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.focus-area button:active {
+  transform: scale(0.95);
+}
+
+.btn:hover {
+  color: rgb(32, 200, 102);
 }

@@ -1,38 +1,39 @@
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="#">
-        <img src="https://i.imgur.com/j5rbueF.png" alt="Urway Logo" loading="lazy"/> Surveys
-    </a>
+  <a class="navbar-brand" href="#">
+      <img  src="https://i.imgur.com/j5rbueF.png" alt="Urway Logo" loading="lazy"/> Surveys
+  </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/home"><i class="fas fa-house-user"></i> Home </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/surveys" *ngIf="isAuthenticated"><i class="fas fa-poll-h"></i> Surveys </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="fas fa-poll-h"></i> Create Survey </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+          <li id="zoom" class="nav-item">
+              <a class="nav-link" routerLink="/home"><i class="fas fa-house-user" style="color: #51cf66;"></i> Home </a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/about"><i class="fas fa-question-circle"></i> About Us </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/contact"><i class="fas fa-envelope-open-text"></i> Contact Us </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="fas fa-sign-in-alt"></i> Log In </a>
+          <li id="zoom" class="nav-item">
+              <a class="nav-link" routerLink="/surveys" *ngIf="isAuthenticated"><i class="fas fa-poll-h" style="color: #51cf66;"></i> Surveys </a>
           </li>
-          <li class="nav-item">
-            <button class="nav-link" type="button" *ngIf="isAuthenticated" (click)="onLogOut()"><i class="fas fa-sign-in-alt"></i> Log Out</button>
+          <li id="zoom" class="nav-item">
+            <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="fas fa-poll-h" style="color: #51cf66;"></i> Create Survey </a>
         </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/register" *ngIf="!isAuthenticated"><i class="fas fa-sign-in-alt"></i> Register </a>
+          <li id="zoom" class="nav-item">
+              <a class="nav-link" routerLink="/about"><i class="fas fa-question-circle " style="color: #51cf66;"></i> About Us </a>
+          </li>
+          <li id="zoom" class="nav-item">
+              <a class="nav-link" routerLink="/contact"><i class="fas fa-envelope-open-text" style="color: #51cf66;"></i> Contact Us </a>
+          </li>
+          <li id="zoom" class="nav-item">
+            <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="fas fa-sign-in-alt" style="color: #51cf66;"></i> Log In </a>
         </li>
-        </ul>
-    </div>
+          <div><li id="zoom1" class="nav-item">
+            <button class="btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="fas fa-sign-in-alt" style="color: #51cf66;"></i>  Log Out</button>
+        </li></div>
+
+        <li id="zoom" class="nav-item">
+          <a class="nav-link" routerLink="/register" *ngIf="!isAuthenticated"><i class="fas fa-user-plus" style="color: #51cf66;"></i> Register </a>
+      </li>
+      </ul>
+  </div>
 </nav>
