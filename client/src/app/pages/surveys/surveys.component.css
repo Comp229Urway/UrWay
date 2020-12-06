@@ -19,3 +19,7 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.form-group {
+  font-size: 36px !important;
+}

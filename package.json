@@ -23,5 +23,8 @@
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "~1.9.1",
     "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "font-awesome-animation": "^0.2.1"
   }
 }
