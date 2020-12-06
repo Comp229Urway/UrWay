@@ -53,6 +53,7 @@
 
 #zoom:hover {
   transform: scale(1.2);
+
 }
 
 #zoom1 {
@@ -65,5 +66,26 @@
 
 .nav-link:hover{
   color: rgb(32, 200, 102) !important;
+
+
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
+.material-icons{
+  color: #51cf66;
+-webkit-transition: all .7s;
+    -ms-transition: all .7s;
+    -o-transition: all .7s;
+    transition: all .7s;
+    -webkit-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+}
+
+.material-icons:hover{
+	-webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}

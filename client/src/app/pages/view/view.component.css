@@ -7,7 +7,7 @@ body {
 	position: relative;
 	padding: 10px 25px;
 
-	background-color: #4CC713;
+	background-color: rgb(32, 200, 102);
 	color: white;
 
 	font-family: sans-serif;
@@ -53,11 +53,11 @@ body {
 }
 
 .buttonDownload:hover:before {
-	border-color: #4CC713;
+	border-color: rgb(32, 200, 102);
 }
 
 .buttonDownload:hover:after {
-	border-top-color: #4CC713;
+	border-top-color: rgb(32, 200, 102);
 	animation-play-state: running;
 }
 
