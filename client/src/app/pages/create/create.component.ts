@@ -216,9 +216,16 @@ export class CreateComponent implements OnInit {s
   }
   onCancel()
   {
+    let dialogref = this.dialog.open(DialogBoxComponent, {data:{title: "Confirmation", message: "Are you sure you want to cancel?", isNotify: false}});
+    dialogref.afterClosed().subscribe(isConfirmed => {
+      if(isConfirmed)
+      {
+        this.router.navigate(['/surveys']);
+      }
+    });/*
     if(confirm("Are you sure?"))
     {
       this.router.navigate(['/surveys']);
-    }
+    } */
   }
 }

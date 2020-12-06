@@ -36,7 +36,11 @@ module.exports.displayParticipateSurveyPage = (req, res, next) => {
           console.log(err);
           res.end();
         } 
-        res.json({message: 'Fetch Survey to Participate Successful', survey: surveyToEdit});
+        if(surveyToEdit.isActive)
+        {
+            return res.json({message: 'Fetch Survey to Participate Successful', survey: surveyToEdit, success: true});
+        }
+        return res.json({message: 'Survey is not Active!', survey: null, success: false});
        });
 }
 

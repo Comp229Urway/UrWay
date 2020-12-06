@@ -34,8 +34,17 @@ export class ParticipateComponent implements OnInit {
   }
   getSurvey()
   {
-    this.http.get<{message:string, survey: SurveyModel}>('http://localhost:4000/surveys/active/' + this.participateID).subscribe(getData => {
-      this.participateSurvey = getData.survey;
+    this.http.get<{message:string, survey: SurveyModel, success: boolean}>('http://localhost:4000/surveys/active/' + this.participateID).subscribe(getData => {
+      if(!getData.success)
+      {
+        this.dialog.open(DialogBoxComponent, {data:{title: "Error", message: getData.message, isNotify: true}});
+        this.router.navigate(['/home']);
+      }
+      else
+      {
+        this.participateSurvey = getData.survey;
+      }
+
       console.log(getData.message);
     });
   }
