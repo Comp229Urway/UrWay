@@ -7,3 +7,19 @@
   border-style: solid;
   border-color: lightgreen;
 }
+
+.btn:hover {
+  color: rgb(32, 200, 102);
+}
+
+.scroll-animations {
+  display: flex;
+}
+
+.scroll-animations div {
+  flex-grow: 1;
+  padding: 30px;
+  text-align: center;
+  opacity: 0;
+  color: #333;
+}

@@ -18,3 +18,39 @@
 #zoom:hover {
   transform: scale(1.5);
 }
+
+/* Click animations styles */
+
+.focus-area input {
+  outline: none;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+.focus-area textarea {
+  outline: none;
+  border: 2px solid black;
+  resize: none;
+  transition: 0.3s;
+}
+
+.focus-area input:focus,
+.focus-area textarea:focus {
+  border-color: #30cc8b;
+}
+
+.focus-area button {
+  display: block;
+  background: #30cc8b;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.focus-area button:active {
+  transform: scale(0.95);
+}
+
+.btn:hover {
+  color: rgb(32, 200, 102);
+}
