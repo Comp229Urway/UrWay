@@ -29,7 +29,7 @@
             <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="material-icons">login</i> Log In </a>
         </li>
           <div><li id="zoom1" class="nav-item">
-            <button class="btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="fas fa-sign-in-alt" style="color: #51cf66;"></i>  Log Out</button>
+            <button class="btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="material-icons">exit_to_app</i>  Log Out</button>
         </li></div>
 
         <li id="zoom" class="nav-item">
