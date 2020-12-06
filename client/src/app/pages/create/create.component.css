@@ -13,7 +13,7 @@
 }
 
 .trash {
-	background:#bb121d;
+	background:#020000;
 	width: 30px;
 	height: 35px;
 	display: inline-block;
@@ -32,7 +32,7 @@
 	position: absolute;
   height: 8px;
   width: 40px;
-	background: #bb121d;
+	background: #020000;
 	top: -11px;
 	left: -5px;
 	right: -8px;
@@ -74,6 +74,12 @@
 
 .trash:hover span {
 	transform: rotate(-45deg);
-	transition: transform 250ms;
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
+}
+
+.trash:hover{
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
 }
 

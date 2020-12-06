@@ -43,7 +43,7 @@ section {
 
 
 .trash {
-	background:#bb121d;
+	background:#020000;
 	width: 30px;
 	height: 35px;
 	display: inline-block;
@@ -62,7 +62,7 @@ section {
 	position: absolute;
   height: 8px;
   width: 40px;
-	background: #bb121d;
+	background: #020000;
 	top: -11px;
 	left: -5px;
 	right: -8px;
@@ -104,5 +104,26 @@ section {
 
 .trash:hover span {
 	transform: rotate(-45deg);
-	transition: transform 250ms;
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
+}
+
+.trash:hover{
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
+}
+
+.editBtn:hover {
+  color: rgb(63, 63, 63);
+  background-color: rgb(248, 206, 18, 0.609);
+}
+
+.viewBtn:hover {
+  color: rgb(63, 63, 63);
+  background-color: rgba(175, 82, 175, 0.609);
+}
+
+.activationBtn:hover{
+  color: rgb(63, 63, 63);
+  background-color: rgb(32, 172, 62, 0.609);
 }
