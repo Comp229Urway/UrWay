@@ -24,7 +24,7 @@
             <button mat-raised-button color="primary" (click)="onActivate(survey, i, dateStart.value, dateEnd.value)">{{buttonName[i]}}</button>
             <button mat-stroked-button color="primary" (click)="onView(survey._id)">View</button>
             <button mat-stroked-button color="accent" [hidden]="isActivated[i]" (click)="onEdit(survey._id)">Edit</button>
-            <button mat-stroked-button color="warn" [hidden]="isActivated[i]" (click)="onDeleteSurvey(survey._id)">Delete</button>
+            <button mat-stroked-button color="warn" [hidden]="isActivated[i]" (click)="onDeleteSurvey(survey._id)"><span class="trash"><span></span><i></i></span></button>
             </div>
           </mat-action-row>
         </mat-expansion-panel>

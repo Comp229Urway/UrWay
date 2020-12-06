@@ -49,9 +49,7 @@
                       </mat-form-field>
                     </div>
                     <div class="col-2">
-                      <button type="button" mat-raised-button color="primary" [disabled]="i==0" (click)="onRemoveQuestion(i)">
-                        <span class="material-icons">clear</span>
-                      </button>
+                      <button type="button" [disabled]="i==0" (click)="onRemoveQuestion(i)"><span class="trash"><span></span><i></i></span></button>
                     </div>
                   </div>
                   <mat-form-field class="w-100" appearance="fill">  <!-- Question -->
