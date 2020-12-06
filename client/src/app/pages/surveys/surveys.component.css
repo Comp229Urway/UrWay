@@ -1,7 +1,12 @@
+#fun {
+  top: 50px;
+}
+
 .max-size{
   height: 100px;
   width: 500px;
   background-color: powderblue;
+  top: 250px;
 }
 
 .full

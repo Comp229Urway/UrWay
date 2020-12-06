@@ -12,12 +12,9 @@
 }
 
 #zoom {
-  transition: transform .2s;
-  width: 13px;
-  height: 13px;
-  margin: 0 auto;
+  transition: transform .12s;
 }
 
 #zoom:hover {
-  transform: scale(2);
+  transform: scale(1.5);
 }
