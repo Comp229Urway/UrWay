@@ -1,25 +1,25 @@
-#fun {
-  top: 50px;
-}
-
-.max-size{
-  height: 100px;
-  width: 500px;
-  background-color: powderblue;
-  top: 250px;
-}
-
-.full
+.w-80
 {
-  height: 100%;
+  border-radius: 25px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: honeydew;
+  border-style: solid;
+  border-color: lightgreen;
 }
 
-.vertical-align
-{
-  display: inline-block;
-  vertical-align: middle;
+.btn:hover {
+  color: rgb(32, 200, 102);
 }
 
-.form-group {
-  font-size: 36px !important;
+.scroll-animations {
+  display: flex;
+}
+
+.scroll-animations div {
+  flex-grow: 1;
+  padding: 30px;
+  text-align: center;
+  opacity: 0;
+  color: #333;
 }
