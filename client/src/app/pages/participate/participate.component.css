@@ -12,3 +12,32 @@
 {
   color: red;
 }
+
+.container {
+  font-family: patua;
+  font-size: 20px;
+  font-weight: 2;
+}
+
+.btn:hover {
+  color: rgb(32, 200, 102);
+}
+
+.w-100 {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+
+.w-100 {
+  outline: none;
+  border: 2px solid black;
+  resize: none;
+  transition: 0.3s;
+}
+
+
+
+.w-100 textarea:focus {
+  border: 2px solid;
+  border-color: #30cc8b;
+}
