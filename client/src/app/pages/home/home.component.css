@@ -23,3 +23,30 @@
   opacity: 0;
   color: #333;
 }
+
+.Middle {
+  font-family: patua;
+  font-size: 30px;
+  font-weight: 2;
+}
+
+.thead-dark {
+  font-family: patua;
+  font-size: 35px;
+}
+
+td {
+  font-family: patua;
+  font-size: 20px;
+  font-weight: 2;
+}
+
+td button {
+  font-family: patua;
+  font-size: 18px;
+  font-weight: 1;
+}
+
+.Middle b:hover {
+  color: rgb(32, 200, 102) !important;
+}
