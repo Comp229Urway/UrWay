@@ -1,6 +1,12 @@
 .navbar.transparent.navbar-inverse {
    background: rgba(0, 0, 0, 0.75);
+   font-family: averia;
  }
+
+ .nav-link {
+   font-family: averia;
+   font-size: 1.2vw;
+}
 
  a{
    color: #fff;
