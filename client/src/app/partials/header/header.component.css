@@ -55,3 +55,29 @@ div {
   padding-left: -55px;
 }
 
+.navbar-toggler {
+  border-color: rgb(255, 255, 255);
+}
+
+@media (max-width:980px) {
+   .nav-link {
+     font-family: averia;
+     font-size: 15px;
+   }
+
+   #zoom {
+     transition: transform .2s;
+   }
+
+   #zoom:hover {
+     transform: scale(1.05);
+   }
+
+   #zoom1 {
+     transition: transform .2s;
+   }
+
+   #zoom1:hover {
+     transform: scale(1.05);
+   }
+}

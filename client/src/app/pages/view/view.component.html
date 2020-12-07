@@ -2,7 +2,7 @@
   <div *ngIf="showData">
   <div class="row justify-content-between">
     <h3>Participants: {{participants.length}}</h3>
-    <button mat-raised-button color="primary" (click)="generatePDF()">Download PDF</button>
+    <button class= "buttonDownload" mat-raised-button color="primary" (click)="generatePDF()">Download PDF</button>
   </div>
   <div class="row justify-content-start">
     <h3>Survey Date: {{ getActiveDate() }}</h3>
