@@ -7,11 +7,12 @@ section {
   height: 100vh;
   padding-top: -250px;
   color: #fff;
-  background: linear-gradient(-75deg, #ffffff, #cacaca, #a0a0a0, #6d6d6d);
+  background: linear-gradient(-75deg, #ffffff, #dcffea, #dadcff, #f3ffd0);
   background-size: 400% 400%;
   position: absolute;
   animation: change 10s ease-in-out infinite;
 }
+
 .ourCarousel{
   margin-top: -50px;
 }
