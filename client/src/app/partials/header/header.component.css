@@ -1,9 +1,14 @@
+.navbar.transparent.navbar-inverse {
+   background: rgba(255, 255, 255, 0.65);
+ }
+
 #zoom {
   transition: transform .2s;
 }
 
 #zoom:hover {
   transform: scale(1.2);
+
 }
 
 #zoom1 {
@@ -14,28 +19,28 @@
   transform: scale(1.05);
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: rgb(32, 200, 102) !important;
+
+
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
-@media only screen and (max-width: 1080px) {
-  #zoom {
-    transition: transform .2s;
-  }
+.material-icons {
+  color: #51cf66;
+  -webkit-transition: all .7s;
+  -ms-transition: all .7s;
+  -o-transition: all .7s;
+  transition: all .7s;
+  -webkit-transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg);
+  transform: rotate(-360deg);
+}
 
-  #zoom:hover {
-    transform: scale(1.025);
-  }
-
-  #zoom1 {
-    transition: transform .2s;
-  }
-
-  #zoom1:hover {
-    transform: scale(1);
-  }
-
-  .nav-link:hover {
-    color: rgb(32, 200, 102) !important;
-  }
+.material-icons:hover {
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
 }

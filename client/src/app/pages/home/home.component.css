@@ -1,3 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-height: 95vh;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: linear-gradient(-50deg, #5c5858, #1d992e, #47bd64, #18da8f);
+  background-size: 400% 400%;
+  position: relative;
+  animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change {
+  0%{background-position: 0 50%;}
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+
 .w-80
 {
   border-radius: 25px;
@@ -6,6 +33,11 @@
   background-color: honeydew;
   border-style: solid;
   border-color: lightgreen;
+}
+
+.btn {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .btn:hover {
@@ -39,6 +71,7 @@ td {
   font-family: patua;
   font-size: 20px;
   font-weight: 2;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 td button {
@@ -48,5 +81,5 @@ td button {
 }
 
 .Middle b:hover {
-  color: rgb(32, 200, 102) !important;
+  color: rgb(2, 36, 16) !important;
 }
