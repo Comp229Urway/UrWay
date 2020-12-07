@@ -1,8 +1,9 @@
 <!-- Main Navigation -->
+<section>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<nav class="navbar fixed-top transparent navbar-inverse  navbar-expand-lg navbar-light">
+<nav class="navbar transparent navbar-inverse  navbar-expand-lg bg-dark">
   <a class="navbar-brand" href="#">
-      <img  src="https://i.imgur.com/j5rbueF.png" alt="Urway Logo" loading="lazy"/> Surveys
+      <img  src="https://i.imgur.com/HrwYwiM.png" alt="Urway Logo" loading="lazy"/> Surveys
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +30,7 @@
             <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated"><i class="material-icons">login</i> Log In </a>
         </li>
           <div><li id="zoom1" class="nav-item">
-            <button class="btn btn-lg btn-outline-dark" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="material-icons">exit_to_app</i>  Log Out</button>
+            <button class="btn btn-lg btn-outline-light" type="button" *ngIf="isAuthenticated" (click)="onLogOut()">{{username}} <i class="material-icons">exit_to_app</i>  Log Out</button>
         </li></div>
 
         <li id="zoom" class="nav-item">

@@ -1,5 +1,9 @@
 .navbar.transparent.navbar-inverse {
-   background: rgba(255, 255, 255, 0.65);
+   background: rgba(0, 0, 0, 0.75);
+ }
+
+ a{
+   color: #fff;
  }
 
 #zoom {
@@ -8,7 +12,6 @@
 
 #zoom:hover {
   transform: scale(1.2);
-
 }
 
 #zoom1 {
@@ -21,8 +24,6 @@
 
 .nav-link:hover {
   color: rgb(32, 200, 102) !important;
-
-
   -webkit-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
@@ -44,3 +45,7 @@
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
 }
+div {
+  padding-left: -55px;
+}
+
