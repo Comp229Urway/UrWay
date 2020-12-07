@@ -1,22 +1,173 @@
-#fun {
-  top: 50px;
+.btn:hover {
+  color: rgb(32, 200, 102);
 }
 
-.max-size{
-  height: 100px;
-  width: 500px;
-  background-color: powderblue;
-  top: 250px;
+.scroll-animations {
+  display: flex;
 }
 
-.full
-{
-  height: 100%;
+.scroll-animations div {
+  flex-grow: 1;
+  padding: 30px;
+  text-align: center;
+  opacity: 0;
+  color: #333;
 }
 
-.vertical-align
-{
+.trash {
+  background: #020000;
+  width: 30px;
+  height: 35px;
   display: inline-block;
-  vertical-align: middle;
+  margin: 0 auto;
+
+  position: relative;
+  -webkit-border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
+.trash span {
+  position: absolute;
+  height: 8px;
+  width: 40px;
+  background: #020000;
+  top: -11px;
+  left: -5px;
+  right: -8px;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform: rotate(0deg);
+  transition: transform 250ms;
+  transform-origin: 19% 100%;
+}
+
+.trash i {
+  position: relative;
+  width: 3px;
+  height: 20px;
+  background: #fff;
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.trash i:after {
+  content: '';
+  width: 3px;
+  height: 20px;
+  background: #fff;
+  position: absolute;
+  left: -10px;
+  border-radius: 5px;
+}
+
+.trash i:before {
+  content: '';
+  width: 3px;
+  height: 20px;
+  background: #fff;
+  position: absolute;
+  right: -10px;
+  border-radius: 5px;
+}
+
+.trash:hover span {
+  transform: rotate(-45deg);
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
+}
+
+.trash:hover {
+  transition: transform 250ms;
+  background-color: rgb(172, 13, 13);
+}
+
+.editBtn:hover {
+  color: rgb(63, 63, 63);
+  background-color: rgb(248, 206, 18, 0.609);
+}
+
+.viewBtn:hover {
+  color: rgb(63, 63, 63);
+  background-color: rgba(175, 82, 175, 0.609);
+}
+
+.activationBtn:hover {
+  color: rgb(63, 63, 63);
+  background-color: rgb(32, 172, 62, 0.609);
+}
+
+.container {
+  margin-top: 35px;
+  background-color: rgba(255, 255, 255, 0.171);
+  opacity: 0.9;
+}
+
+mat-form-field {
+  font-family: patua;
+  font-size: 1.5vw;
+  color: rgb(0, 0, 0);
+  font-style: bold;
+}
+
+section {
+  width: 100%;
+  height: 85vh;
+  padding-top: -250px;
+  color: #fff;
+  background: linear-gradient(-75deg, #ffffff, #dcffea, #dadcff, #f3ffd0);
+  background-size: 400% 400%;
+  position: absolute;
+  animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 75% 50%;
+  }
+
+  75% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (max-width:1000px) {
+  form {
+    font-family: patua;
+    font-size: 15px;
+  }
+}
+
+h1 {
+  padding: 15px;
+  font-family: patua;
+  font-size: 1.5vw;
+  color: rgb(32, 200, 102);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.562);
+  font-style: bold;
+  line-height: 1.1;
+}
+
+h2,
+h3,
+p {
+  font-family: patua;
+  font-size: 1.2vw;
+  color: rgb(0, 0, 0);
+  font-style: bold;
+  line-height: 1.1;
+}

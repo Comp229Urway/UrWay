@@ -1,0 +1,93 @@
+.error {
+  border-radius: 4px;
+  padding: 4px;
+  color: red;
+}
+
+mat-card {
+  margin-top: 35px;
+  background-color: rgba(255, 255, 255, 0.171);
+  opacity: 0.9;
+}
+
+mat-form-field {
+  font-family: patua;
+  font-size: 1.5vw;
+  color: rgb(0, 0, 0);
+  font-style: bold;
+}
+
+form {
+  font-family: patua;
+  font-size: 1.2vw;
+}
+
+.focus-area input {
+  outline: none;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+.focus-area textarea {
+  outline: none;
+  border: 2px solid black;
+  resize: none;
+  transition: 0.3s;
+}
+
+.focus-area input:focus,
+.focus-area textarea:focus {
+  border-color: #30cc8b;
+}
+
+.focus-area button {
+  display: block;
+  background: #30cc8b;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.focus-area button:active {
+  transform: scale(0.95);
+}
+
+.btn:hover {
+  color: rgb(32, 200, 102);
+}
+
+section {
+  width: 100%;
+  height: 85vh;
+  padding-top: -250px;
+  color: #fff;
+  background: linear-gradient(-75deg, #ffffff, #dcffea, #dadcff, #f3ffd0);
+  background-size: 400% 400%;
+  position: absolute;
+  animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 75% 50%;
+  }
+
+  75% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (max-width:1000px) {
+  form {
+    font-family: patua;
+    font-size: 15px;
+  }
+}

@@ -120,4 +120,3 @@ export class SurveysComponent extends BasePageComponent implements OnInit {
     this.router.navigate(['/surveys/view/' + id]);
   }
 }
-

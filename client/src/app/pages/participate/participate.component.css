@@ -38,3 +38,23 @@
   border: 2px solid;
   border-color: #30cc8b;
 }
+
+.btn {
+  color: #333;
+  background-color: rgb(32, 200, 102);
+  padding: 15px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.btn:hover {
+  color: rgb(32, 200, 102);
+  background-color: #333;
+  padding: 15px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+#example-radio-group-label {
+  color: green;
+}
