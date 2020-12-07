@@ -3,9 +3,9 @@
     <div class="col-8">
       <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
         <div class="row justify-content-end form-group mb-10">
-          <button type="submit" mat-raised-button color="primary">{{buttonName}}</button>
-          <button type="button" mat-button color="primary" (click)="onReset()">Reset</button>
-          <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+          <button class= "btnEdit" type="submit" mat-raised-button >{{buttonName}}</button>
+          <button class= "btnReset" type="button" mat-raised-button  (click)="onReset()">Reset</button>
+          <button class= "btnCancel" type="button" mat-raised-button  (click)="onCancel()">Cancel</button>
         </div>
         <mat-form-field class="w-100" appearance="fill">  <!--surveyTitle-->
           <mat-label>Title</mat-label>
@@ -27,7 +27,7 @@
         </mat-form-field>
 
         <div class="row justify-content-start form-group ">
-          <button type="button" mat-raised-button color="primary" (click)="onAddQuestion()">Add Question</button>
+          <button class= "addQuestion" type="button" mat-raised-button color="primary" (click)="onAddQuestion()">Add Question</button>
         </div>
           <div formArrayName="questionsDetail">   <!--FormArray QuestionsDetail-->
             <div *ngFor="let questionDetail of questionsDetailcontrols.controls; let i=index">
@@ -61,7 +61,7 @@
                   <mat-error>Please Enter Question</mat-error>
                   </mat-form-field>
                   <div class="row justify-content-center form-group">
-                    <button type="button" mat-raised-button color="primary" [disabled]="hideChoices(i)" (click)="onAddChoices(i)">Add Choices</button>
+                    <button class= addChoice type="button" mat-raised-button color="primary" [disabled]="hideChoices(i)" (click)="onAddChoices(i)">Add Choices</button>
                   </div>
                   <div formArrayName="choices">
                     <div *ngFor="let choice of getChoicesControl(i); let in=index">
@@ -78,8 +78,7 @@
                         </div>
                         <div class="col-2 align-self-center">
                           <button type="button" mat-raised-button color="warn"  [disabled]="in < 2" (click)="onRemoveChoice(i, in)">
-                            <span class="material-icons"></span>
-                          </button>
+                            <span class="material-icons"></span>Delete</button>
                         </div>
                       </div>
                     </div>

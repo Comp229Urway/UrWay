@@ -12,6 +12,50 @@
   color: rgb(32, 200, 102);
 }
 
+.btnEdit{
+  color:green;
+  background-color: white;
+}
+.btnEdit:hover{
+  color:white;
+  background-color: green;
+}
+
+.btnReset{
+  color:rgb(216, 195, 8);
+  background-color: white;
+}
+
+.btnReset:hover{
+  color:gray;
+  background-color: rgb(250, 228, 35);
+}
+
+ .btnCancel{
+  color:red;
+  background-color: white;
+ }
+
+ .btnCancel:hover{
+  color:white;
+  background-color: red;
+ }
+
+ .addQuestion{
+   color:green;
+   background-color: white;
+ }
+
+ .addQuestion:hover{
+  color:white;
+  background-color: green;
+}
+
+.addChoice{
+  color:white;
+  background-color: green;
+}
+
 .scroll-animations {
   display: flex;
 }
