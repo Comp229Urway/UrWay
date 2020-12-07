@@ -22,27 +22,30 @@ section {
   color: rgb(32, 200, 102);
 }
 
-.Middle {
-  font-family: patua;
-  font-weight: 2;
+.btn-lg{
+    font-size:3vw;
 }
 
 .Middle h1 {
-  font-size:45px;
+  font-family: patua;
+  font-size:4vw;
+  padding: 15px;
 }
 
 .Middle p {
-  font-size: 30px;
+  font-family: patua;
+  font-size: 2vw;
+  padding: 15px;
 }
 
 .thead-dark {
   font-family: patua;
-  font-size: 35px;
+  font-size: 1.5vw;
 }
 
 td {
   font-family: patua;
-  font-size: 20px;
+  font-size: 1vw;
   font-weight: 2;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -73,4 +76,25 @@ td button {
   100% {
     background-position: 0 50%;
   }
+}
+
+@media (max-width:750px){
+ .Middle h1
+ { font-size:35px;
+}
+.Middle p {
+  font-size: 20px;
+}
+
+.thead-dark {
+  font-size: 15px;
+}
+
+td {
+    font-size: 15px;
+  }
+
+td button {
+  font-size: 15px;
+}
 }
